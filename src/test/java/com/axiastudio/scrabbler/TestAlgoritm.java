@@ -36,9 +36,9 @@ public class TestAlgoritm {
     public void testSolutionsOnBoard() {
         board.placeLetterAtPosition(new Position(0, 0), "c");
         board.placeLetterAtPosition(new Position(2, 0), "s");
-        String letters = "ai";
+        String lettersInYourHand = "ai";
         List<String> solutions = board.findPossiblesPatterns().stream()
-                .map(pattern -> dictionary.discoverWordsByLettersAndPattern(letters, pattern))
+                .map(pattern -> dictionary.discoverWordsByLettersAndPattern(lettersInYourHand, pattern))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
         Assertions.assertTrue(solutions.contains("casi"));
