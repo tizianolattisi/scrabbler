@@ -1,0 +1,5 @@
+scrabbler.iml
+.idea/*
+/target/*
+/deploy/*
+/out/*
