@@ -19,6 +19,16 @@ public class Position {
         return y;
     }
 
+    public Position horizontalShift() {
+        x++;
+        return this;
+    }
+
+    public Position verticalShift() {
+        y++;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

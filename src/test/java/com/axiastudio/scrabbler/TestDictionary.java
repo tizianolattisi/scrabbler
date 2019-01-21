@@ -61,7 +61,7 @@ public class TestDictionary {
                 .addTile(new Tile("a"));
         List<String> discovered = dictionary.discoverWordsByLettersAndPattern("sleaaii", pattern);
         Assertions.assertTrue(discovered.contains("casa"));
-        Assertions.assertTrue(discovered.contains("cara"));
+        Assertions.assertTrue(discovered.contains("cala"));
         Assertions.assertFalse(discovered.contains("caza"));
     }
 

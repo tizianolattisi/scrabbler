@@ -34,6 +34,10 @@ public class Tile {
         return letter;
     }
 
+    public void placeLetter(String letter) {
+        this.letter = letter;
+    }
+
     public Boolean isEmpty() {
         return letter == null;
     }

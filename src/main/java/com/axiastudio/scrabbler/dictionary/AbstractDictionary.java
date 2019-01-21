@@ -13,24 +13,51 @@ public abstract class AbstractDictionary implements Dictionary {
     @Override
     public List<String> discoverWordsByLettersAndPattern(String letters, Pattern pattern) {
         return words.stream()
-                .filter(w -> checkWordMatching(w, pattern))
+                .filter(word -> isMatchingPattern(word, pattern))
+                .filter(word -> canBeBuildWithLetters(word, letters, pattern))
                 .collect(Collectors.toList());
     }
 
-    private Boolean checkWordMatching(String word, Pattern pattern) {
+    private Boolean isMatchingPattern(String word, Pattern pattern) {
         if (word.length()!=pattern.length()) {
             return Boolean.FALSE;
         }
         for (int i = 0; i<pattern.length(); i++) {
             Tile tile = pattern.getTile(i);
             char letter = word.charAt(i);
-            if (tile.isEmpty() || tile.getLetter().charAt(0) == letter) {
-
-            } else {
+            if (!fitInTile(tile, letter)) {
                 return Boolean.FALSE;
             }
         }
         return Boolean.TRUE;
+    }
+
+    private boolean fitInTile(Tile tile, char letter) {
+        return tile.isEmpty() || tile.getLetter().charAt(0) == letter;
+    }
+
+    private Boolean canBeBuildWithLetters(String word, String letters, Pattern pattern) {
+        for (int i=0; i<pattern.length(); i++) {
+            Tile actualTile = pattern.getTile(i);
+            String actualLetter = String.valueOf(word.charAt(i));
+            if (actualTile.isEmpty()) {
+                if (letters.contains(actualLetter)) {
+                    letters = removeLetter(letters, actualLetter);
+                } else {
+                    return Boolean.FALSE;
+                }
+            } else if (!actualTile.getLetter().equals(actualLetter)) {
+                return Boolean.FALSE;
+            }
+        }
+        return Boolean.TRUE;
+    }
+
+    private String removeLetter(String letters, String actualLetter) {
+        StringBuilder stringBuilder = new StringBuilder(letters);
+        stringBuilder.deleteCharAt(letters.indexOf(actualLetter));
+        letters = stringBuilder.toString();
+        return letters;
     }
 
 }
