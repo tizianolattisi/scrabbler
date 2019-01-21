@@ -7,13 +7,13 @@ public class Tile {
     private LetterOrWord letterOrWord;
 
     public Tile() {
-        multiplicator = 0;
+        multiplicator = 1;
         letterOrWord = LetterOrWord.NONE;
         letter = null;
     }
 
     public Tile(String letter) {
-        this.multiplicator = 0;
+        this.multiplicator = 1;
         this.letterOrWord = LetterOrWord.NONE;
         this.letter = letter;
     }

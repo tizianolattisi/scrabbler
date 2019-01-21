@@ -37,4 +37,7 @@ public class Engine {
         return solutions;
     }
 
+    public Bag getBag() {
+        return bag;
+    }
 }
