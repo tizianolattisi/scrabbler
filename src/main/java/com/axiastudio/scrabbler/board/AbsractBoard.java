@@ -1,4 +1,6 @@
-package com.axiastudio.scrabbler;
+package com.axiastudio.scrabbler.board;
+
+import com.axiastudio.scrabbler.commons.Tile;
 
 import java.util.HashMap;
 import java.util.Map;

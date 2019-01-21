@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler;
+package com.axiastudio.scrabbler.board;
 
 public interface BoardFactory {
 

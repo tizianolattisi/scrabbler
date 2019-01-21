@@ -1,6 +1,9 @@
-package com.axiastudio.scrabbler.dictionary;
+package com.axiastudio.scrabbler;
 
-import com.axiastudio.scrabbler.*;
+import com.axiastudio.scrabbler.board.Board;
+import com.axiastudio.scrabbler.board.ClassicBoardFactory;
+import com.axiastudio.scrabbler.board.Position;
+import com.axiastudio.scrabbler.commons.Tile;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

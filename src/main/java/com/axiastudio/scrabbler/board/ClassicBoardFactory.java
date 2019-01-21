@@ -1,4 +1,7 @@
-package com.axiastudio.scrabbler;
+package com.axiastudio.scrabbler.board;
+
+import com.axiastudio.scrabbler.commons.LetterOrWord;
+import com.axiastudio.scrabbler.commons.Tile;
 
 public class ClassicBoardFactory implements BoardFactory {
 

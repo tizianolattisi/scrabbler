@@ -1,6 +1,11 @@
-package com.axiastudio.scrabbler.dictionary;
+package com.axiastudio.scrabbler;
 
-import com.axiastudio.scrabbler.*;
+import com.axiastudio.scrabbler.commons.LetterOrWord;
+import com.axiastudio.scrabbler.commons.Tile;
+import com.axiastudio.scrabbler.dictionary.Dictionary;
+import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
+import com.axiastudio.scrabbler.dictionary.Pattern;
+import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler;
+package com.axiastudio.scrabbler.dictionary;
 
 import java.io.IOException;
 import java.net.URL;

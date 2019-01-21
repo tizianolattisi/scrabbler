@@ -1,4 +1,6 @@
-package com.axiastudio.scrabbler;
+package com.axiastudio.scrabbler.dictionary;
+
+import com.axiastudio.scrabbler.commons.Tile;
 
 import java.util.ArrayList;
 import java.util.List;
