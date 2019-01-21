@@ -68,41 +68,36 @@ public abstract class AbstractBoard implements Board {
     }
 
     private List<Pattern> findHorizontalPatternFromPosition(Position position) {
-        List<Pattern> horizontalPatterns = new ArrayList<>();
-        Integer numberfOfLetters = 7;
-        Pattern actualPattern = new Pattern();
-        actualPattern.addTile(getTile(position));
-        numberfOfLetters--;
-        while (numberfOfLetters > 0 && isInBoard(position)) {
-            Tile nextTile = getTile(position.horizontalShift());
-            actualPattern.addTile(nextTile);
-            if (nextTile.isEmpty()) {
-                numberfOfLetters--;
-            }
-            if (actualPattern.isValid()) {
-                horizontalPatterns.add(actualPattern.createNewPatternWithSameTiles());
-            }
-        }
-        return horizontalPatterns;
+        return findVerticalPatternFromPosition(position, Boolean.FALSE);
+
     }
 
     private List<Pattern> findVerticalPatternFromPosition(Position position) {
-        List<Pattern> verticalPatterns = new ArrayList<>();
+        return findVerticalPatternFromPosition(position, Boolean.TRUE);
+    }
+
+    private List<Pattern> findVerticalPatternFromPosition(Position position, Boolean vertical) {
+        List<Pattern> patterns = new ArrayList<>();
         Integer numberfOfLetters = 7;
         Pattern actualPattern = new Pattern();
         actualPattern.addTile(getTile(position));
         numberfOfLetters--;
         while (numberfOfLetters > 0 && isInBoard(position)) {
-            Tile nextTile = getTile(position.verticalShift());
+            if (vertical) {
+                position.verticalShift();
+            } else {
+                position.horizontalShift();
+            }
+            Tile nextTile = getTile(position);
             actualPattern.addTile(nextTile);
             if (nextTile.isEmpty()) {
                 numberfOfLetters--;
             }
             if (actualPattern.isValid()) {
-                verticalPatterns.add(actualPattern.createNewPatternWithSameTiles());
+                patterns.add(actualPattern.createNewPatternWithSameTiles());
             }
         }
-        return verticalPatterns;
+        return patterns;
     }
 
 }
