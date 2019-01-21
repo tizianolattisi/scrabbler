@@ -1,7 +1,7 @@
 package com.axiastudio.scrabbler;
 
 import com.axiastudio.scrabbler.board.Board;
-import com.axiastudio.scrabbler.board.ClassicBoardFactory;
+import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.board.Position;
 import com.axiastudio.scrabbler.commons.Tile;
 import com.axiastudio.scrabbler.dictionary.Pattern;
