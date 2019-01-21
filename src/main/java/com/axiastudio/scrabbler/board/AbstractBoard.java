@@ -57,6 +57,7 @@ public abstract class AbstractBoard implements Board {
     public void placeLetterAtPosition(Position position, String letter) {
         Tile tile = tiles.get(position);
         tile.placeLetter(letter);
+        tiles.put(position, tile);
     }
 
     @Override

@@ -11,10 +11,11 @@ public abstract class AbstractDictionary implements Dictionary {
     protected List<String> words = new ArrayList<>();
 
     @Override
-    public List<String> discoverWordsByLettersAndPattern(String letters, Pattern pattern) {
+    public List<Pattern> discoverWordsByLettersAndPattern(String letters, Pattern pattern) {
         return words.stream()
                 .filter(word -> isMatchingPattern(word, pattern))
                 .filter(word -> canBeBuildWithLetters(word, letters, pattern))
+                .map(word -> pattern.createNewPatternWithSameTiles().placeWord(word))
                 .collect(Collectors.toList());
     }
 

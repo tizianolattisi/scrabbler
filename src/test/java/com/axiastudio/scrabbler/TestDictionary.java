@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TestDictionary {
 
@@ -54,12 +55,14 @@ public class TestDictionary {
 
     @Test
     public void testWordsDiscover() {
-        Pattern pattern = new Pattern()
+        Pattern patternToCheck = new Pattern()
                 .addTile(new Tile("c"))
                 .addTile(new Tile("a"))
                 .addTile()
                 .addTile(new Tile("a"));
-        List<String> discovered = dictionary.discoverWordsByLettersAndPattern("sleaaii", pattern);
+        List<String> discovered = dictionary.discoverWordsByLettersAndPattern("sleaaii", patternToCheck).stream()
+                .map(pattern -> pattern.word())
+                .collect(Collectors.toList());
         Assertions.assertTrue(discovered.contains("casa"));
         Assertions.assertTrue(discovered.contains("cala"));
         Assertions.assertFalse(discovered.contains("caza"));

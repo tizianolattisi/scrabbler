@@ -6,6 +6,6 @@ public interface Dictionary {
 
     Integer numberOfWords();
     Boolean checkWordExistence(String word);
-    List<String> discoverWordsByLettersAndPattern(String letters, Pattern pattern);
+    List<Pattern> discoverWordsByLettersAndPattern(String letters, Pattern pattern);
 
 }
