@@ -1,5 +1,6 @@
 package com.axiastudio.scrabbler.board;
 
+import com.axiastudio.scrabbler.bag.Bag;
 import com.axiastudio.scrabbler.commons.Tile;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 
@@ -12,6 +13,7 @@ public abstract class AbstractBoard implements Board {
 
     protected Integer size;
     protected Map<Position, Tile> tiles;
+    protected Bag bag;
 
     public AbstractBoard(Integer size) {
         this.size = size;
@@ -27,8 +29,22 @@ public abstract class AbstractBoard implements Board {
         }
     }
 
+    public void setBag(Bag bag) {
+        this.bag = bag;
+    }
+
     public void setTile(Position position, Tile tile) {
         tiles.put(position, tile);
+    }
+
+    @Override
+    public Bag bag() {
+        return new Bag() {
+            @Override
+            public Integer getValueOfALetter(String letter) {
+                return 1;
+            }
+        };
     }
 
     @Override

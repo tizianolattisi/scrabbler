@@ -1,6 +1,7 @@
 package com.axiastudio.scrabbler;
 
 import com.axiastudio.scrabbler.board.awordedcrack.AwordedCrackBoardFactory;
+import com.axiastudio.scrabbler.board.classic.ClassicBagFactory;
 import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;
 import com.axiastudio.scrabbler.engine.Engine;
@@ -21,7 +22,7 @@ public class TestEngine {
 
     @Test
     public void testClassicBoard() {
-        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME));
+        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetter(0, 0, "c");
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
@@ -31,8 +32,8 @@ public class TestEngine {
     }
 
     @Test
-    public void testAwordedCrackBoard() {
-        Engine engine = new Engine(new AwordedCrackBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME));
+    public void testAwordedCrackBoardWithClassicBag() {
+        Engine engine = new Engine(new AwordedCrackBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetter(0, 0, "c");
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";

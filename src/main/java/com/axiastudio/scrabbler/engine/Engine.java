@@ -1,5 +1,7 @@
 package com.axiastudio.scrabbler.engine;
 
+import com.axiastudio.scrabbler.bag.Bag;
+import com.axiastudio.scrabbler.bag.BagFactory;
 import com.axiastudio.scrabbler.board.Board;
 import com.axiastudio.scrabbler.board.BoardFactory;
 import com.axiastudio.scrabbler.board.Position;
@@ -13,10 +15,12 @@ public class Engine {
 
     private Board board;
     private Dictionary dictionary;
+    private Bag bag;
 
-    public Engine(BoardFactory boardFactory, DictionaryFactory dictionaryFactory) {
+    public Engine(BoardFactory boardFactory, DictionaryFactory dictionaryFactory, BagFactory bagFactory) {
         board = boardFactory.buildAndInitialize();
         dictionary = dictionaryFactory.buildAndInitialize();
+        bag = bagFactory.buildAndInitialize();
     }
 
     public void placeLetter(Integer x, Integer y, String letter) {
