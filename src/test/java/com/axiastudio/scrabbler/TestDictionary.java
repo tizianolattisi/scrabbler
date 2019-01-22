@@ -11,9 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class TestDictionary {
 
     private final static String DICTIONARY_FILE_NAME = "dictionary.txt";
