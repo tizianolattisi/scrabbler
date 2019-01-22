@@ -3,11 +3,11 @@ package com.axiastudio.scrabbler.bag;
 public class LetterTile implements Tile {
 
     protected String letter;
-    private Integer value;
+    private Integer points;
 
-    public LetterTile(String letter, Integer value) {
+    public LetterTile(String letter, Integer points) {
         this.letter = letter;
-        this.value = value;
+        this.points = points;
     }
 
     @Override
@@ -16,8 +16,8 @@ public class LetterTile implements Tile {
     }
 
     @Override
-    public Integer value() {
-        return value;
+    public Integer points() {
+        return points;
     }
 
     @Override

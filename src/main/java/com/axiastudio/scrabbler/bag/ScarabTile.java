@@ -12,7 +12,7 @@ public class ScarabTile extends LetterTile implements Tile {
     }
 
     @Override
-    public Integer value() {
+    public Integer points() {
         return 0;
     }
 
