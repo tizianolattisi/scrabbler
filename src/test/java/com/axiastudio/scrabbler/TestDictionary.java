@@ -80,19 +80,4 @@ public class TestDictionary {
         Assertions.assertFalse(emptyPattern.isValid());
     }
 
-    @Test
-    public void testWordsDiscover() {
-        Pattern patternToCheck = new Pattern()
-                .addSquare(new Square(new LetterTile("c")))
-                .addSquare(new Square(new LetterTile("a")))
-                .addSquare()
-                .addSquare(new Square(new LetterTile("a")));
-        List<String> discovered = dictionary.discoverWordsByLettersAndPattern("sleaaii", patternToCheck).stream()
-                .map(pattern -> pattern.word())
-                .collect(Collectors.toList());
-        Assertions.assertTrue(discovered.contains("casa"));
-        Assertions.assertTrue(discovered.contains("cala"));
-        Assertions.assertFalse(discovered.contains("caza"));
-    }
-
 }

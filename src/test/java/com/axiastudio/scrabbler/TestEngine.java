@@ -1,5 +1,6 @@
 package com.axiastudio.scrabbler;
 
+import com.axiastudio.scrabbler.bag.LetterTile;
 import com.axiastudio.scrabbler.board.awordedcrack.AwordedCrackBoardFactory;
 import com.axiastudio.scrabbler.board.classic.ClassicBagFactory;
 import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
@@ -21,6 +22,22 @@ public class TestEngine {
     @BeforeAll
     public static void initializeTestEnvironment() {
 
+    }
+
+    @Test
+    public void testWordsDiscover() {
+        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        Pattern patternToCheck = new Pattern()
+                .addSquare(new Square(new LetterTile("c")))
+                .addSquare(new Square(new LetterTile("a")))
+                .addSquare()
+                .addSquare(new Square(new LetterTile("a")));
+        List<String> discovered = engine.discoverWordsByLettersAndPattern("sleaaii", patternToCheck).stream()
+                .map(pattern -> pattern.word())
+                .collect(Collectors.toList());
+        Assertions.assertTrue(discovered.contains("casa"));
+        Assertions.assertTrue(discovered.contains("cala"));
+        Assertions.assertFalse(discovered.contains("caza"));
     }
 
     @Test
