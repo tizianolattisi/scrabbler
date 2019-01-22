@@ -54,6 +54,32 @@ public class TestDictionary {
     }
 
     @Test
+    public void testValidPattern() {
+        Pattern pattern = new Pattern()
+                .addTile()
+                .addTile(new Tile(3, LetterOrWord.LETTER))
+                .addTile(new Tile("a"))
+                .addTile();
+        Assertions.assertTrue(pattern.isValid());
+    }
+
+    @Test
+    public void testInvalidEmptyPattern() {
+        Pattern emptyPattern = new Pattern()
+                .addTile()
+                .addTile()
+                .addTile();
+        Assertions.assertFalse(emptyPattern.isValid());
+    }
+
+    @Test
+    public void testInvalidShortPattern() {
+        Pattern emptyPattern = new Pattern()
+                .addTile();
+        Assertions.assertFalse(emptyPattern.isValid());
+    }
+
+    @Test
     public void testWordsDiscover() {
         Pattern patternToCheck = new Pattern()
                 .addTile(new Tile("c"))
