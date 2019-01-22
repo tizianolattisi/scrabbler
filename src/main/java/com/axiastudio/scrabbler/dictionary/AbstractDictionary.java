@@ -34,7 +34,7 @@ public abstract class AbstractDictionary implements Dictionary {
     }
 
     private boolean fitInSquare(Square square, char letter) {
-        return square.isEmpty() || square.getLetter().charAt(0) == letter;
+        return square.isEmpty() || square.getTile().letter().charAt(0) == letter;
     }
 
     private Boolean canBeBuildWithLetters(String word, String letters, Pattern pattern) {
@@ -47,7 +47,7 @@ public abstract class AbstractDictionary implements Dictionary {
                 } else {
                     return Boolean.FALSE;
                 }
-            } else if (!actualSquare.getLetter().equals(actualLetter)) {
+            } else if (!actualSquare.getTile().letter().equals(actualLetter)) {
                 return Boolean.FALSE;
             }
         }

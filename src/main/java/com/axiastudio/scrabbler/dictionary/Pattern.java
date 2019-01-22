@@ -1,5 +1,7 @@
 package com.axiastudio.scrabbler.dictionary;
 
+import com.axiastudio.scrabbler.bag.LetterTile;
+import com.axiastudio.scrabbler.bag.Tile;
 import com.axiastudio.scrabbler.commons.LetterOrWord;
 import com.axiastudio.scrabbler.commons.Square;
 
@@ -32,7 +34,7 @@ public class Pattern {
         Pattern newPattern = new Pattern();
         squares.stream().forEach(square -> newPattern.addSquare(new Square(square.getMultiplicator(),
                 square.isMultiplicatorForLetter() ? LetterOrWord.LETTER : LetterOrWord.WORD,
-                square.getLetter())));
+                square.getTile())));
         return newPattern;
     }
 
@@ -50,13 +52,14 @@ public class Pattern {
 
     public Pattern placeWord(String word) {
         for (int i = 0; i< squares.size(); i++) {
-            squares.get(i).placeLetter(String.valueOf(word.charAt(i)));
+            Tile tile = new LetterTile(String.valueOf(word.charAt(i)));
+            squares.get(i).placeTile(tile);
         }
         return this;
     }
 
     public String word() {
-        return squares.stream().map(t -> t.isEmpty() ? "-" : t.getLetter()).reduce(String::concat).get();
+        return squares.stream().map(t -> t.isEmpty() ? "-" : t.getTile().letter()).reduce(String::concat).get();
     }
 
     @Override

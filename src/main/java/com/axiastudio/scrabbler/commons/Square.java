@@ -1,45 +1,47 @@
 package com.axiastudio.scrabbler.commons;
 
+import com.axiastudio.scrabbler.bag.Tile;
+
 public class Square {
 
-    private String letter;
+    private Tile tile;
     private Integer multiplicator;
     private LetterOrWord letterOrWord;
 
     public Square() {
         multiplicator = 1;
         letterOrWord = LetterOrWord.NONE;
-        letter = null;
+        tile = null;
     }
 
-    public Square(String letter) {
+    public Square(Tile tile) {
         this.multiplicator = 1;
         this.letterOrWord = LetterOrWord.NONE;
-        this.letter = letter;
+        this.tile = tile;
     }
 
     public Square(Integer multiplicator, LetterOrWord letterOrWord) {
         this.multiplicator = multiplicator;
         this.letterOrWord = letterOrWord;
-        this.letter = null;
+        this.tile = null;
     }
 
-    public Square(Integer multiplicator, LetterOrWord letterOrWord, String letter) {
+    public Square(Integer multiplicator, LetterOrWord letterOrWord, Tile tile) {
         this.multiplicator = multiplicator;
         this.letterOrWord = letterOrWord;
-        this.letter = letter;
+        this.tile = tile;
     }
 
-    public String getLetter() {
-        return letter;
+    public Tile getTile() {
+        return tile;
     }
 
-    public void placeLetter(String letter) {
-        this.letter = letter;
+    public void placeTile(Tile tile) {
+        this.tile = tile;
     }
 
     public Boolean isEmpty() {
-        return letter == null;
+        return tile == null;
     }
 
     public Integer getMultiplicator() {

@@ -5,6 +5,11 @@ public class LetterTile implements Tile {
     protected String letter;
     private Integer points;
 
+    public LetterTile(String letter) {
+        this.letter = letter;
+        this.points = 1;
+    }
+
     public LetterTile(String letter, Integer points) {
         this.letter = letter;
         this.points = points;

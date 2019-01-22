@@ -7,4 +7,9 @@ public abstract class AbstractBag implements Bag {
         return 1;
     }
 
+    @Override
+    public Tile extractTileFromLetter(String letter) {
+        return new LetterTile(letter, 1);
+    }
+
 }

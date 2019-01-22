@@ -1,5 +1,6 @@
 package com.axiastudio.scrabbler.board;
 
+import com.axiastudio.scrabbler.bag.LetterTile;
 import com.axiastudio.scrabbler.commons.Square;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 
@@ -40,7 +41,7 @@ public abstract class AbstractBoard implements Board {
     @Override
     public void placeLetterAtPosition(Position position, String letter) {
         Square square = squares.get(position);
-        square.placeLetter(letter);
+        square.placeTile(new LetterTile(letter));
         squares.put(position, square);
     }
 

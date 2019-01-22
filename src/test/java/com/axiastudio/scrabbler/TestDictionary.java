@@ -1,5 +1,6 @@
 package com.axiastudio.scrabbler;
 
+import com.axiastudio.scrabbler.bag.LetterTile;
 import com.axiastudio.scrabbler.commons.LetterOrWord;
 import com.axiastudio.scrabbler.commons.Square;
 import com.axiastudio.scrabbler.dictionary.Dictionary;
@@ -48,7 +49,7 @@ public class TestDictionary {
         Pattern pattern = new Pattern()
                 .addSquare()
                 .addSquare(new Square(3, LetterOrWord.LETTER))
-                .addSquare(new Square("a"))
+                .addSquare(new Square(new LetterTile("a")))
                 .addSquare();
         Assertions.assertEquals(4, pattern.length());
     }
@@ -58,7 +59,7 @@ public class TestDictionary {
         Pattern pattern = new Pattern()
                 .addSquare()
                 .addSquare(new Square(3, LetterOrWord.LETTER))
-                .addSquare(new Square("a"))
+                .addSquare(new Square(new LetterTile("a")))
                 .addSquare();
         Assertions.assertTrue(pattern.isValid());
     }
@@ -82,10 +83,10 @@ public class TestDictionary {
     @Test
     public void testWordsDiscover() {
         Pattern patternToCheck = new Pattern()
-                .addSquare(new Square("c"))
-                .addSquare(new Square("a"))
+                .addSquare(new Square(new LetterTile("c")))
+                .addSquare(new Square(new LetterTile("a")))
                 .addSquare()
-                .addSquare(new Square("a"));
+                .addSquare(new Square(new LetterTile("a")));
         List<String> discovered = dictionary.discoverWordsByLettersAndPattern("sleaaii", patternToCheck).stream()
                 .map(pattern -> pattern.word())
                 .collect(Collectors.toList());
