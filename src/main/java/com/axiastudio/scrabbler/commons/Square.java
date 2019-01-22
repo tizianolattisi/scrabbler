@@ -1,30 +1,30 @@
 package com.axiastudio.scrabbler.commons;
 
-public class Tile {
+public class Square {
 
     private String letter;
     private Integer multiplicator;
     private LetterOrWord letterOrWord;
 
-    public Tile() {
+    public Square() {
         multiplicator = 1;
         letterOrWord = LetterOrWord.NONE;
         letter = null;
     }
 
-    public Tile(String letter) {
+    public Square(String letter) {
         this.multiplicator = 1;
         this.letterOrWord = LetterOrWord.NONE;
         this.letter = letter;
     }
 
-    public Tile(Integer multiplicator, LetterOrWord letterOrWord) {
+    public Square(Integer multiplicator, LetterOrWord letterOrWord) {
         this.multiplicator = multiplicator;
         this.letterOrWord = letterOrWord;
         this.letter = null;
     }
 
-    public Tile(Integer multiplicator, LetterOrWord letterOrWord, String letter) {
+    public Square(Integer multiplicator, LetterOrWord letterOrWord, String letter) {
         this.multiplicator = multiplicator;
         this.letterOrWord = letterOrWord;
         this.letter = letter;

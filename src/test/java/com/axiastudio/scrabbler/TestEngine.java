@@ -3,7 +3,7 @@ package com.axiastudio.scrabbler;
 import com.axiastudio.scrabbler.board.awordedcrack.AwordedCrackBoardFactory;
 import com.axiastudio.scrabbler.board.classic.ClassicBagFactory;
 import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
-import com.axiastudio.scrabbler.commons.Tile;
+import com.axiastudio.scrabbler.commons.Square;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;
 import com.axiastudio.scrabbler.engine.Engine;
@@ -62,18 +62,34 @@ public class TestEngine {
             Integer wordMultiplicator = 1;
             for (int i= 0; i<solution.word().length(); i++) {
                 String letter = String.valueOf(solution.word().charAt(i));
-                Tile tile = solution.getTile(i);
+                Square square = solution.getSquare(i);
                 Integer value = engine.getBag().getValueOfALetter(letter);
-                if (tile.isMultiplicatorForLetter()) {
-                    value = value * tile.getMultiplicator();
+                if (square.isMultiplicatorForLetter()) {
+                    value = value * square.getMultiplicator();
                 }
                 points += value;
-                if (tile.isMultiplicatorForWord()) {
-                    wordMultiplicator *= tile.getMultiplicator();
+                if (square.isMultiplicatorForWord()) {
+                    wordMultiplicator *= square.getMultiplicator();
                 }
             }
             points *= wordMultiplicator;
             System.out.println(solution.word() + " (" + points + ")");
+        }
+    }
+
+    @Test
+    public void test() {
+        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        engine.placeLetter(7, 7, "e");
+        engine.placeLetter(8, 7, "g");
+        engine.placeLetter(9, 7, "o");
+        String lettersInYourHand = "sausoio";
+        List<String> collect = engine.findSolutions(lettersInYourHand).stream()
+                .map(pattern -> pattern.word())
+                .collect(Collectors.toList());
+
+        for (String solution: collect) {
+            //System.out.println(solution);
         }
     }
 

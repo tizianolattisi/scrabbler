@@ -1,7 +1,7 @@
 package com.axiastudio.scrabbler;
 
 import com.axiastudio.scrabbler.commons.LetterOrWord;
-import com.axiastudio.scrabbler.commons.Tile;
+import com.axiastudio.scrabbler.commons.Square;
 import com.axiastudio.scrabbler.dictionary.Dictionary;
 import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
 import com.axiastudio.scrabbler.dictionary.Pattern;
@@ -46,46 +46,46 @@ public class TestDictionary {
     @Test
     public void testPatternLength() {
         Pattern pattern = new Pattern()
-                .addTile()
-                .addTile(new Tile(3, LetterOrWord.LETTER))
-                .addTile(new Tile("a"))
-                .addTile();
+                .addSquare()
+                .addSquare(new Square(3, LetterOrWord.LETTER))
+                .addSquare(new Square("a"))
+                .addSquare();
         Assertions.assertEquals(4, pattern.length());
     }
 
     @Test
     public void testValidPattern() {
         Pattern pattern = new Pattern()
-                .addTile()
-                .addTile(new Tile(3, LetterOrWord.LETTER))
-                .addTile(new Tile("a"))
-                .addTile();
+                .addSquare()
+                .addSquare(new Square(3, LetterOrWord.LETTER))
+                .addSquare(new Square("a"))
+                .addSquare();
         Assertions.assertTrue(pattern.isValid());
     }
 
     @Test
     public void testInvalidEmptyPattern() {
         Pattern emptyPattern = new Pattern()
-                .addTile()
-                .addTile()
-                .addTile();
+                .addSquare()
+                .addSquare()
+                .addSquare();
         Assertions.assertFalse(emptyPattern.isValid());
     }
 
     @Test
     public void testInvalidShortPattern() {
         Pattern emptyPattern = new Pattern()
-                .addTile();
+                .addSquare();
         Assertions.assertFalse(emptyPattern.isValid());
     }
 
     @Test
     public void testWordsDiscover() {
         Pattern patternToCheck = new Pattern()
-                .addTile(new Tile("c"))
-                .addTile(new Tile("a"))
-                .addTile()
-                .addTile(new Tile("a"));
+                .addSquare(new Square("c"))
+                .addSquare(new Square("a"))
+                .addSquare()
+                .addSquare(new Square("a"));
         List<String> discovered = dictionary.discoverWordsByLettersAndPattern("sleaaii", patternToCheck).stream()
                 .map(pattern -> pattern.word())
                 .collect(Collectors.toList());

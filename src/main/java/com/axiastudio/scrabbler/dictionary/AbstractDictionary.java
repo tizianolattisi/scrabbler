@@ -1,6 +1,6 @@
 package com.axiastudio.scrabbler.dictionary;
 
-import com.axiastudio.scrabbler.commons.Tile;
+import com.axiastudio.scrabbler.commons.Square;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public abstract class AbstractDictionary implements Dictionary {
         return words.stream()
                 .filter(word -> isMatchingPattern(word, pattern))
                 .filter(word -> canBeBuildWithLetters(word, letters, pattern))
-                .map(word -> pattern.createNewPatternWithSameTiles().placeWord(word))
+                .map(word -> pattern.createNewPatternWithSameSquares().placeWord(word))
                 .collect(Collectors.toList());
     }
 
@@ -24,30 +24,30 @@ public abstract class AbstractDictionary implements Dictionary {
             return Boolean.FALSE;
         }
         for (int i = 0; i<pattern.length(); i++) {
-            Tile tile = pattern.getTile(i);
+            Square square = pattern.getSquare(i);
             char letter = word.charAt(i);
-            if (!fitInTile(tile, letter)) {
+            if (!fitInSquare(square, letter)) {
                 return Boolean.FALSE;
             }
         }
         return Boolean.TRUE;
     }
 
-    private boolean fitInTile(Tile tile, char letter) {
-        return tile.isEmpty() || tile.getLetter().charAt(0) == letter;
+    private boolean fitInSquare(Square square, char letter) {
+        return square.isEmpty() || square.getLetter().charAt(0) == letter;
     }
 
     private Boolean canBeBuildWithLetters(String word, String letters, Pattern pattern) {
         for (int i=0; i<pattern.length(); i++) {
-            Tile actualTile = pattern.getTile(i);
+            Square actualSquare = pattern.getSquare(i);
             String actualLetter = String.valueOf(word.charAt(i));
-            if (actualTile.isEmpty()) {
+            if (actualSquare.isEmpty()) {
                 if (letters.contains(actualLetter)) {
                     letters = removeLetter(letters, actualLetter);
                 } else {
                     return Boolean.FALSE;
                 }
-            } else if (!actualTile.getLetter().equals(actualLetter)) {
+            } else if (!actualSquare.getLetter().equals(actualLetter)) {
                 return Boolean.FALSE;
             }
         }

@@ -1,6 +1,6 @@
 package com.axiastudio.scrabbler.board;
 
-import com.axiastudio.scrabbler.commons.Tile;
+import com.axiastudio.scrabbler.commons.Square;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.Map;
 public abstract class AbstractBoard implements Board {
 
     protected Integer size;
-    protected Map<Position, Tile> tiles;
+    protected Map<Position, Square> squares;
 
     public AbstractBoard(Integer size) {
         this.size = size;
@@ -19,29 +19,29 @@ public abstract class AbstractBoard implements Board {
     }
 
     private void initiazlizeEmptyBoard(Integer size) {
-        tiles = new HashMap<>();
+        squares = new HashMap<>();
         for (int x=0; x<size; x++) {
             for(int y=0; y<size; y++) {
-                tiles.put(new Position(x, y), new Tile());
+                squares.put(new Position(x, y), new Square());
             }
         }
     }
 
-    public void setTile(Position position, Tile tile) {
-        tiles.put(position, tile);
+    public void setSquare(Position position, Square square) {
+        squares.put(position, square);
     }
 
     @Override
-    public Tile getTile(Position position) {
-        Tile tile = tiles.get(position);
-        return tile;
+    public Square getSquare(Position position) {
+        Square square = squares.get(position);
+        return square;
     }
 
     @Override
     public void placeLetterAtPosition(Position position, String letter) {
-        Tile tile = tiles.get(position);
-        tile.placeLetter(letter);
-        tiles.put(position, tile);
+        Square square = squares.get(position);
+        square.placeLetter(letter);
+        squares.put(position, square);
     }
 
     @Override
@@ -80,7 +80,7 @@ public abstract class AbstractBoard implements Board {
         List<Pattern> patterns = new ArrayList<>();
         Integer numberfOfLetters = 7;
         Pattern actualPattern = new Pattern();
-        actualPattern.addTile(getTile(position));
+        actualPattern.addSquare(getSquare(position));
         numberfOfLetters--;
         while (numberfOfLetters > 0 && isInBoard(position)) {
             if (vertical) {
@@ -88,13 +88,13 @@ public abstract class AbstractBoard implements Board {
             } else {
                 position.horizontalShift();
             }
-            Tile nextTile = getTile(position);
-            actualPattern.addTile(nextTile);
-            if (nextTile.isEmpty()) {
+            Square nextSquare = getSquare(position);
+            actualPattern.addSquare(nextSquare);
+            if (nextSquare.isEmpty()) {
                 numberfOfLetters--;
             }
             if (actualPattern.isValid()) {
-                patterns.add(actualPattern.createNewPatternWithSameTiles());
+                patterns.add(actualPattern.createNewPatternWithSameSquares());
             }
         }
         return patterns;

@@ -3,7 +3,7 @@ package com.axiastudio.scrabbler;
 import com.axiastudio.scrabbler.board.Board;
 import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.board.Position;
-import com.axiastudio.scrabbler.commons.Tile;
+import com.axiastudio.scrabbler.commons.Square;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,10 +22,10 @@ public class TestBoard {
 
     @Test
     public void testClassicBoardCreation() {
-        Tile tile = board.getTile(new Position(0, 0));
-        Assertions.assertTrue(tile.isEmpty());
-        Assertions.assertTrue(tile.isMultiplicatorForWord());
-        Assertions.assertTrue(tile.getMultiplicator()==3);
+        Square square = board.getSquare(new Position(0, 0));
+        Assertions.assertTrue(square.isEmpty());
+        Assertions.assertTrue(square.isMultiplicatorForWord());
+        Assertions.assertTrue(square.getMultiplicator()==3);
     }
 
     @Test
