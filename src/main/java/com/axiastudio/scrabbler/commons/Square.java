@@ -56,7 +56,4 @@ public class Square {
         return letterOrWord.equals(LetterOrWord.WORD);
     }
 
-    public LetterOrWord getLetterOrWord() {
-        return letterOrWord;
-    }
 }
