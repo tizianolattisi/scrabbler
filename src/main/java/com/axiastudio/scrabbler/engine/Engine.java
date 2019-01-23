@@ -26,7 +26,7 @@ public class Engine {
     }
 
     public void placeLetter(Integer x, Integer y, String letter) {
-        board.placeLetterAtPosition(new Position(x, y), letter);
+        board.placeTileAtPosition(new Position(x, y), bag.extractTileByLetter(letter));
     }
 
     public List<Pattern> findSolutions(String lettersInYourHand) {

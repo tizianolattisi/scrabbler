@@ -1,5 +1,7 @@
 package com.axiastudio.scrabbler;
 
+import com.axiastudio.scrabbler.board.classic.ClassicBag;
+import com.axiastudio.scrabbler.core.Bag;
 import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.board.Position;
@@ -14,10 +16,12 @@ import java.util.List;
 public class TestBoard {
 
     private static Board board;
+    private static Bag bag;
 
     @BeforeAll
     public static void initializeTestEnvironment() {
         board = new ClassicBoardFactory().buildAndInitialize();
+        bag = new ClassicBag();
     }
 
     @Test
@@ -30,7 +34,7 @@ public class TestBoard {
 
     @Test
     public void testPatternsDiscover() {
-        board.placeLetterAtPosition(new Position(1, 0), "z");
+        board.placeTileAtPosition(new Position(1, 0), bag.extractTileByLetter("z"));
         List<Pattern> possiblesPatterns = board.findPossiblesPatterns();
         Assertions.assertFalse(possiblesPatterns.isEmpty());
     }

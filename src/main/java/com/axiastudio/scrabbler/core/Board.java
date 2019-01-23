@@ -8,7 +8,7 @@ import java.util.List;
 public interface Board {
 
     Square getSquare(Position position);
-    void placeLetterAtPosition(Position position, String letter);
+    void placeTileAtPosition(Position position, Tile tile);
     List<Pattern> findPossiblesPatterns();
 
 }
