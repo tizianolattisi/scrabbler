@@ -16,10 +16,10 @@ public abstract class AbstractBoard implements Board {
 
     public AbstractBoard(Integer size) {
         this.size = size;
-        initiazlizeEmptyBoard(size);
+        initializeEmptyBoard(size);
     }
 
-    private void initiazlizeEmptyBoard(Integer size) {
+    private void initializeEmptyBoard(Integer size) {
         squares = new HashMap<>();
         for (int x=0; x<size; x++) {
             for(int y=0; y<size; y++) {
@@ -46,14 +46,14 @@ public abstract class AbstractBoard implements Board {
 
     @Override
     public List<Pattern> findPossiblesPatterns() {
-        ArrayList<Pattern> possibilesPatterns = new ArrayList<>();
+        ArrayList<Pattern> possiblesPatterns = new ArrayList<>();
         for (int x = 0; x < size; x++) {
             for (int y = 0; y < size; y++) {
                 List<Pattern> newPatterns = findPatternFromPosition(new Position(x, y));
-                possibilesPatterns.addAll(newPatterns);
+                possiblesPatterns.addAll(newPatterns);
             }
         }
-        return possibilesPatterns;
+        return possiblesPatterns;
     }
 
     private boolean isInBoard(Position position) {
@@ -61,10 +61,10 @@ public abstract class AbstractBoard implements Board {
     }
 
     private List<Pattern> findPatternFromPosition(Position position) {
-        ArrayList<Pattern> possibilesPatterns = new ArrayList<>();
-        possibilesPatterns.addAll(findHorizontalPatternFromPosition(position));
-        possibilesPatterns.addAll(findVerticalPatternFromPosition(position));
-        return possibilesPatterns;
+        ArrayList<Pattern> possiblesPatterns = new ArrayList<>();
+        possiblesPatterns.addAll(findHorizontalPatternFromPosition(position));
+        possiblesPatterns.addAll(findVerticalPatternFromPosition(position));
+        return possiblesPatterns;
     }
 
     private List<Pattern> findHorizontalPatternFromPosition(Position position) {
@@ -78,11 +78,11 @@ public abstract class AbstractBoard implements Board {
 
     private List<Pattern> findVerticalPatternFromPosition(Position position, Boolean vertical) {
         List<Pattern> patterns = new ArrayList<>();
-        Integer numberfOfLetters = 7;
+        Integer numberOfLetters = 7;
         Pattern actualPattern = new Pattern();
         actualPattern.addSquare(getSquare(position));
-        numberfOfLetters--;
-        while (numberfOfLetters > 0 && isInBoard(position)) {
+        numberOfLetters--;
+        while (numberOfLetters > 0 && isInBoard(position)) {
             if (vertical) {
                 position.verticalShift();
             } else {
@@ -91,7 +91,7 @@ public abstract class AbstractBoard implements Board {
             Square nextSquare = getSquare(position);
             actualPattern.addSquare(nextSquare);
             if (nextSquare.isEmpty()) {
-                numberfOfLetters--;
+                numberOfLetters--;
             }
             if (actualPattern.isValid()) {
                 patterns.add(actualPattern.createNewPatternWithSameSquares());
