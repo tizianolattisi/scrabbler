@@ -47,7 +47,7 @@ public class Pattern {
     }
 
     public Boolean isValid() {
-        return length()>1 && squares.stream().filter(t -> !t.isEmpty()).count()>0;
+        return length()>1 && squares.stream().anyMatch(t -> !t.isEmpty());
     }
 
     public Pattern placeWord(String word) {
