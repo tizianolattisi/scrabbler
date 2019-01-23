@@ -31,11 +31,10 @@ public class Engine {
 
     public List<Pattern> findSolutions(String lettersInYourHand) {
         List<Pattern> possiblesPatterns = board.findPossiblesPatterns();
-        List<Pattern> solutions = possiblesPatterns.stream()
+        return possiblesPatterns.stream()
                 .map(pattern -> discoverWordsByLettersAndPattern(lettersInYourHand, pattern))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
-        return solutions;
     }
 
     public Bag getBag() {

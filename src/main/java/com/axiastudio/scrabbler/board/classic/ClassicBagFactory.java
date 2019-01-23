@@ -7,8 +7,7 @@ public class ClassicBagFactory implements BagFactory {
 
     @Override
     public Bag buildAndInitialize() {
-        ClassicBag bag = new ClassicBag();
-        return bag;
+        return new ClassicBag();
     }
 
 }
