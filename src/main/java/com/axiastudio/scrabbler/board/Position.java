@@ -19,14 +19,12 @@ public class Position {
         return y;
     }
 
-    public Position horizontalShift() {
+    public void horizontalShift() {
         x++;
-        return this;
     }
 
-    public Position verticalShift() {
+    public void verticalShift() {
         y++;
-        return this;
     }
 
     @Override
