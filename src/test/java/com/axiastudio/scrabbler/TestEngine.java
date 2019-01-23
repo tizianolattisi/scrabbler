@@ -33,7 +33,7 @@ public class TestEngine {
                 .addSquare()
                 .addSquare(new Square(new LetterTile("a")));
         List<String> discovered = engine.discoverWordsByLettersAndPattern("sleaaii", patternToCheck).stream()
-                .map(pattern -> pattern.word())
+                .map(Pattern::word)
                 .collect(Collectors.toList());
         Assertions.assertTrue(discovered.contains("casa"));
         Assertions.assertTrue(discovered.contains("cala"));
@@ -47,7 +47,7 @@ public class TestEngine {
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
         List<String> solutions = engine.findSolutions(lettersInYourHand).stream()
-                .map(pattern -> pattern.word())
+                .map(Pattern::word)
                 .collect(Collectors.toList());
         Assertions.assertTrue(solutions.contains("casi"));
         Assertions.assertFalse(solutions.contains("casa"));
@@ -60,7 +60,7 @@ public class TestEngine {
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
         List<String> solutions = engine.findSolutions(lettersInYourHand).stream()
-                .map(pattern -> pattern.word())
+                .map(Pattern::word)
                 .collect(Collectors.toList());
         Assertions.assertTrue(solutions.contains("casi"));
         Assertions.assertFalse(solutions.contains("casa"));
@@ -102,7 +102,7 @@ public class TestEngine {
         engine.placeLetter(9, 7, "o");
         String lettersInYourHand = "sausoio";
         List<String> collect = engine.findSolutions(lettersInYourHand).stream()
-                .map(pattern -> pattern.word())
+                .map(Pattern::word)
                 .collect(Collectors.toList());
 
         for (String solution: collect) {
