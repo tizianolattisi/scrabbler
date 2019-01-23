@@ -2,7 +2,7 @@ package com.axiastudio.scrabbler;
 
 import com.axiastudio.scrabbler.bag.LetterTile;
 import com.axiastudio.scrabbler.bag.ScarabTile;
-import com.axiastudio.scrabbler.bag.Tile;
+import com.axiastudio.scrabbler.core.Tile;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

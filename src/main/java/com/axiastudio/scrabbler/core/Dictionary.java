@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler.dictionary;
+package com.axiastudio.scrabbler.core;
 
 import java.util.List;
 

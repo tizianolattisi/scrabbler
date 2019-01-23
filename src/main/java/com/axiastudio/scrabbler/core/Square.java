@@ -1,6 +1,4 @@
-package com.axiastudio.scrabbler.commons;
-
-import com.axiastudio.scrabbler.bag.Tile;
+package com.axiastudio.scrabbler.core;
 
 public class Square {
 

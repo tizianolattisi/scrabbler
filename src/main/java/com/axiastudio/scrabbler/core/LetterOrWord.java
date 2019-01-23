@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler.commons;
+package com.axiastudio.scrabbler.core;
 
 public enum LetterOrWord {
 

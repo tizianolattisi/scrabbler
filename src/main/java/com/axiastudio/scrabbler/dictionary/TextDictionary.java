@@ -1,5 +1,7 @@
 package com.axiastudio.scrabbler.dictionary;
 
+import com.axiastudio.scrabbler.core.Dictionary;
+
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;

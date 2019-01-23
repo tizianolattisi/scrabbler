@@ -1,9 +1,9 @@
 package com.axiastudio.scrabbler;
 
-import com.axiastudio.scrabbler.board.Board;
+import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.board.Position;
-import com.axiastudio.scrabbler.commons.Square;
+import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

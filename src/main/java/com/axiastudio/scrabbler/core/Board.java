@@ -1,6 +1,6 @@
-package com.axiastudio.scrabbler.board;
+package com.axiastudio.scrabbler.core;
 
-import com.axiastudio.scrabbler.commons.Square;
+import com.axiastudio.scrabbler.board.Position;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 
 import java.util.List;

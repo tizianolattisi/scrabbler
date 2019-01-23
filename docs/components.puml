@@ -1,17 +1,12 @@
 @startuml
 
 package "scrabbler" {
-[engine] --> [dictionary]
-[engine] --> [bag]
-[engine] --> [board]
-[engine] --> [commons]
-[dictionary] --> [bag]
-[dictionary] --> [commons]
-[commons] --> [bag]
+
+[bag] --> [core]
+
+[board] --> [core]
 [board] --> [bag]
-[board] --> [commons]
 [board] --> [dictionary]
-[bag]
 }
 
 

@@ -1,10 +1,10 @@
 package com.axiastudio.scrabbler.board.classic;
 
-import com.axiastudio.scrabbler.board.Board;
-import com.axiastudio.scrabbler.board.BoardFactory;
+import com.axiastudio.scrabbler.core.Board;
+import com.axiastudio.scrabbler.core.BoardFactory;
 import com.axiastudio.scrabbler.board.Position;
-import com.axiastudio.scrabbler.commons.LetterOrWord;
-import com.axiastudio.scrabbler.commons.Square;
+import com.axiastudio.scrabbler.core.LetterOrWord;
+import com.axiastudio.scrabbler.core.Square;
 
 public class ClassicBoardFactory implements BoardFactory {
 

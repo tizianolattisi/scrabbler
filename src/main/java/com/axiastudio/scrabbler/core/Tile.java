@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler.bag;
+package com.axiastudio.scrabbler.core;
 
 public interface Tile {
 

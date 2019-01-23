@@ -1,10 +1,10 @@
 package com.axiastudio.scrabbler;
 
 import com.axiastudio.scrabbler.bag.LetterTile;
-import com.axiastudio.scrabbler.commons.LetterOrWord;
-import com.axiastudio.scrabbler.commons.Square;
-import com.axiastudio.scrabbler.dictionary.Dictionary;
-import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
+import com.axiastudio.scrabbler.core.LetterOrWord;
+import com.axiastudio.scrabbler.core.Square;
+import com.axiastudio.scrabbler.core.Dictionary;
+import com.axiastudio.scrabbler.core.DictionaryFactory;
 import com.axiastudio.scrabbler.dictionary.Pattern;
 import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;
 import org.junit.jupiter.api.Assertions;

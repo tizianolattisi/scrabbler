@@ -1,5 +1,8 @@
 package com.axiastudio.scrabbler.dictionary;
 
+import com.axiastudio.scrabbler.core.Dictionary;
+import com.axiastudio.scrabbler.core.DictionaryFactory;
+
 public class TextDictionaryFactory implements DictionaryFactory {
 
     private final String fileName;
