@@ -13,19 +13,19 @@ public class TestBag {
         Tile zTile = new LetterTile("z", 8);
         Tile oTile = new LetterTile("o", 1);
         Tile eTile = new LetterTile("e", 1);
-        Assertions.assertTrue(zTile.points()==8);
-        Assertions.assertTrue(oTile.points()==1);
-        Assertions.assertFalse(eTile.points()==3);
+        Assertions.assertEquals(8, (int) zTile.points());
+        Assertions.assertEquals(1, (int) oTile.points());
+        Assertions.assertNotEquals(3, (int) eTile.points());
     }
 
     @Test
     public void testScarabTile() {
         Tile scarab = new ScarabTile();
         Assertions.assertTrue(scarab.isScarab());
-        Assertions.assertTrue(scarab.points()==0);
-        Assertions.assertTrue(scarab.letter()==null);
+        Assertions.assertEquals(0, (int) scarab.points());
+        Assertions.assertNull(scarab.letter());
         ((ScarabTile) scarab).castLetter("q");
-        Assertions.assertTrue(scarab.letter()=="q");
+        Assertions.assertSame("q", scarab.letter());
     }
 
 }

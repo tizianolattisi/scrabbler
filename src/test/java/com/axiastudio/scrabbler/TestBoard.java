@@ -25,7 +25,7 @@ public class TestBoard {
         Square square = board.getSquare(new Position(0, 0));
         Assertions.assertTrue(square.isEmpty());
         Assertions.assertTrue(square.isMultiplicatorForWord());
-        Assertions.assertTrue(square.getMultiplicator()==3);
+        Assertions.assertEquals(3, (int) square.getMultiplicator());
     }
 
     @Test
