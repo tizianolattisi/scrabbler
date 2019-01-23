@@ -1,0 +1,19 @@
+@startuml
+
+package "scrabbler" {
+[engine] --> [dictionary]
+[engine] --> [bag]
+[engine] --> [board]
+[engine] --> [commons]
+[dictionary] --> [bag]
+[dictionary] --> [commons]
+[commons] --> [bag]
+[board] --> [bag]
+[board] --> [commons]
+[board] --> [dictionary]
+[bag]
+}
+
+
+
+@enduml
