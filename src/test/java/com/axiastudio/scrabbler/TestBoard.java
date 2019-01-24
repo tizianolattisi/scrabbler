@@ -1,9 +1,9 @@
 package com.axiastudio.scrabbler;
 
-import com.axiastudio.scrabbler.board.classic.ClassicBag;
+import com.axiastudio.scrabbler.customs.classic.ClassicBag;
 import com.axiastudio.scrabbler.core.Bag;
 import com.axiastudio.scrabbler.core.Board;
-import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
+import com.axiastudio.scrabbler.customs.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Pattern;

@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler.board.classic;
+package com.axiastudio.scrabbler.customs.classic;
 
 import com.axiastudio.scrabbler.board.AbstractBoard;
 import com.axiastudio.scrabbler.core.Board;

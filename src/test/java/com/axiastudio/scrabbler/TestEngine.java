@@ -1,9 +1,9 @@
 package com.axiastudio.scrabbler;
 
 import com.axiastudio.scrabbler.core.LetterTile;
-import com.axiastudio.scrabbler.board.awordedcrack.AwordedCrackBoardFactory;
-import com.axiastudio.scrabbler.board.classic.ClassicBagFactory;
-import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;
+import com.axiastudio.scrabbler.customs.awordedcrack.AwordedCrackBoardFactory;
+import com.axiastudio.scrabbler.customs.classic.ClassicBagFactory;
+import com.axiastudio.scrabbler.customs.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Pattern;
 import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;

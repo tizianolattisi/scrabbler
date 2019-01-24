@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler.board.awordedcrack;
+package com.axiastudio.scrabbler.customs.awordedcrack;
 
 import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.core.BoardFactory;

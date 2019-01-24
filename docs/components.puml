@@ -4,8 +4,16 @@ package "scrabbler" {
 [engine] --> [core]
 [dictionary] --> [core]
 [core]
-[board] --> [bag]
 [board] --> [core]
 [bag] --> [core]
+[customs] --> [core]
+[customs] --> [board]
+[customs] --> [bag]
 }
+
+package "customs" {
+[Classic]
+[AwordedCrack]
+}
+
 @enduml
