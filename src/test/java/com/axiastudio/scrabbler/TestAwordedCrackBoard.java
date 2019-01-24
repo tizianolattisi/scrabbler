@@ -1,6 +1,6 @@
 package com.axiastudio.scrabbler;
 
-import com.axiastudio.scrabbler.board.Position;
+import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.board.awordedcrack.AwordedCrackBoardFactory;
 import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.core.Square;

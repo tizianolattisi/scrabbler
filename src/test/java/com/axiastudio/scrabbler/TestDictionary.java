@@ -5,7 +5,7 @@ import com.axiastudio.scrabbler.core.LetterOrWord;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Dictionary;
 import com.axiastudio.scrabbler.core.DictionaryFactory;
-import com.axiastudio.scrabbler.dictionary.Pattern;
+import com.axiastudio.scrabbler.core.Pattern;
 import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

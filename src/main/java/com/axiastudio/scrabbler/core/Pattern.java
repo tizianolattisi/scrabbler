@@ -1,9 +1,6 @@
-package com.axiastudio.scrabbler.dictionary;
+package com.axiastudio.scrabbler.core;
 
 import com.axiastudio.scrabbler.bag.LetterTile;
-import com.axiastudio.scrabbler.core.Tile;
-import com.axiastudio.scrabbler.core.LetterOrWord;
-import com.axiastudio.scrabbler.core.Square;
 
 import java.util.ArrayList;
 import java.util.List;

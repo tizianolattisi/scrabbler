@@ -2,7 +2,7 @@ package com.axiastudio.scrabbler.board.awordedcrack;
 
 import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.core.BoardFactory;
-import com.axiastudio.scrabbler.board.Position;
+import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.core.LetterOrWord;
 import com.axiastudio.scrabbler.core.Square;
 

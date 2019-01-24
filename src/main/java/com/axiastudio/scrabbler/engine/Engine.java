@@ -4,11 +4,11 @@ import com.axiastudio.scrabbler.core.Bag;
 import com.axiastudio.scrabbler.core.BagFactory;
 import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.core.BoardFactory;
-import com.axiastudio.scrabbler.board.Position;
+import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Dictionary;
 import com.axiastudio.scrabbler.core.DictionaryFactory;
-import com.axiastudio.scrabbler.dictionary.Pattern;
+import com.axiastudio.scrabbler.core.Pattern;
 
 import java.util.List;
 import java.util.stream.Collectors;

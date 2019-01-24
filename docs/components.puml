@@ -1,16 +1,11 @@
 @startuml
 
 package "scrabbler" {
-[engine] --> [dictionary]
-[engine] --> [board]
 [engine] --> [core]
-[dictionary] --> [bag]
 [dictionary] --> [core]
-[core] --> [board]
-[core] --> [dictionary]
+[core] --> [bag]
 [board] --> [bag]
 [board] --> [core]
-[board] --> [dictionary]
 [bag] --> [core]
 }
 @enduml
