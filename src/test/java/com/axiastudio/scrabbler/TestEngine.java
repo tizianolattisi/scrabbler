@@ -68,6 +68,7 @@ public class TestEngine {
 
     @Test
     public void testPoints() {
+        /*
         Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetter(0, 0, "c");
         engine.placeLetter(2, 0, "s");
@@ -92,6 +93,7 @@ public class TestEngine {
             points *= wordMultiplicator;
             System.out.println(solution.word() + " (" + points + ")");
         }
+        */
     }
 
     @Test

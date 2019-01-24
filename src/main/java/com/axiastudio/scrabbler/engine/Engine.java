@@ -37,10 +37,6 @@ public class Engine {
                 .collect(Collectors.toList());
     }
 
-    public Bag getBag() {
-        return bag;
-    }
-
     public List<Pattern> discoverWordsByLettersAndPattern(String letters, Pattern pattern) {
         return dictionary.words().stream()
                 .filter(word -> isMatchingPattern(word, pattern))
