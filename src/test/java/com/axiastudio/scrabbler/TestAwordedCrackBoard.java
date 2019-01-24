@@ -20,7 +20,7 @@ public class TestAwordedCrackBoard {
 
     @Test
     public void testBoardCreation() {
-        Square square = board.getSquare(new Position(1, 0));
+        Square square = board.getSquare(new Position(2, 0));
         Assertions.assertTrue(square.isEmpty());
         Assertions.assertTrue(square.isMultiplicatorForWord());
         Assertions.assertEquals(3, (int) square.getMultiplicator());
