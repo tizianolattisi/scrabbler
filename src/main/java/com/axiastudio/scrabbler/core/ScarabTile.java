@@ -1,6 +1,4 @@
-package com.axiastudio.scrabbler.bag;
-
-import com.axiastudio.scrabbler.core.Tile;
+package com.axiastudio.scrabbler.core;
 
 public class ScarabTile extends LetterTile implements Tile {
 

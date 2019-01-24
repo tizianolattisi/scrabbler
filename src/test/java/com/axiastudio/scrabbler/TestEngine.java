@@ -1,6 +1,6 @@
 package com.axiastudio.scrabbler;
 
-import com.axiastudio.scrabbler.bag.LetterTile;
+import com.axiastudio.scrabbler.core.LetterTile;
 import com.axiastudio.scrabbler.board.awordedcrack.AwordedCrackBoardFactory;
 import com.axiastudio.scrabbler.board.classic.ClassicBagFactory;
 import com.axiastudio.scrabbler.board.classic.ClassicBoardFactory;

@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler.bag;
+package com.axiastudio.scrabbler.core;
 
 import com.axiastudio.scrabbler.core.Tile;
 

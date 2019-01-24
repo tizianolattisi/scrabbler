@@ -1,7 +1,5 @@
 package com.axiastudio.scrabbler.core;
 
-import com.axiastudio.scrabbler.bag.LetterTile;
-
 import java.util.ArrayList;
 import java.util.List;
 

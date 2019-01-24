@@ -1,6 +1,6 @@
 package com.axiastudio.scrabbler;
 
-import com.axiastudio.scrabbler.bag.LetterTile;
+import com.axiastudio.scrabbler.core.LetterTile;
 import com.axiastudio.scrabbler.core.LetterOrWord;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Dictionary;
