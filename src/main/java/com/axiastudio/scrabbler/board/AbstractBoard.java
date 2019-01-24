@@ -34,6 +34,11 @@ public abstract class AbstractBoard implements Board {
     }
 
     @Override
+    public Integer size() {
+        return size;
+    }
+
+    @Override
     public Square getSquare(Position position) {
         return squares.get(position);
     }
