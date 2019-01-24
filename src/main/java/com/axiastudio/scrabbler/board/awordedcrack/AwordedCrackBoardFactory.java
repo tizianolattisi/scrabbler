@@ -2,7 +2,6 @@ package com.axiastudio.scrabbler.board.awordedcrack;
 
 import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.core.BoardFactory;
-import com.axiastudio.scrabbler.board.classic.ClassicBoard;
 import com.axiastudio.scrabbler.board.Position;
 import com.axiastudio.scrabbler.core.LetterOrWord;
 import com.axiastudio.scrabbler.core.Square;
@@ -12,7 +11,7 @@ public class AwordedCrackBoardFactory implements BoardFactory {
 
     @Override
     public Board buildAndInitialize() {
-        ClassicBoard board = new ClassicBoard(15);
+        AwordedCrackBoard board = new AwordedCrackBoard(15);
 
         board.setSquare(new Position(1, 0), new Square(3, LetterOrWord.WORD));
         board.setSquare(new Position(4, 0), new Square(3, LetterOrWord.LETTER));
