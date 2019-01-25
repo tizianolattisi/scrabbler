@@ -6,7 +6,7 @@ import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.dictionary.Dictionary;
 import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
 import com.axiastudio.scrabbler.core.Pattern;
-import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;
+import com.axiastudio.scrabbler.customs.classic.ClassicDictionaryFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,7 +22,7 @@ public class TestDictionary {
     }
 
     private static Dictionary buildAndInitializeDictionary() {
-        DictionaryFactory factory = new TextDictionaryFactory(DICTIONARY_FILE_NAME);
+        DictionaryFactory factory = new ClassicDictionaryFactory(DICTIONARY_FILE_NAME);
         return factory.buildAndInitialize();
     }
 

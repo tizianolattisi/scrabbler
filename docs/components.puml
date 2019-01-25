@@ -9,14 +9,13 @@ package "scrabbler" {
 [core]
 [board] --> [core]
 [bag] --> [core]
-[customs] --> [core]
-[customs] --> [board]
-[customs] --> [bag]
 }
 
 package "customs" {
 [Classic]
 [AwordedCrack]
 }
+
+customs <|-- scrabbler
 
 @enduml

@@ -6,7 +6,7 @@ import com.axiastudio.scrabbler.customs.classic.ClassicBagFactory;
 import com.axiastudio.scrabbler.customs.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Pattern;
-import com.axiastudio.scrabbler.dictionary.TextDictionaryFactory;
+import com.axiastudio.scrabbler.customs.classic.ClassicDictionaryFactory;
 import com.axiastudio.scrabbler.engine.Engine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,7 +26,7 @@ public class TestEngine {
 
     @Test
     public void testWordsDiscover() {
-        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        Engine engine = new Engine(new ClassicBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         Pattern patternToCheck = new Pattern()
                 .addSquare(new Square(new LetterTile("c")))
                 .addSquare(new Square(new LetterTile("a")))
@@ -42,7 +42,7 @@ public class TestEngine {
 
     @Test
     public void testClassicBoard() {
-        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        Engine engine = new Engine(new ClassicBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetter(0, 0, "c");
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
@@ -55,7 +55,7 @@ public class TestEngine {
 
     @Test
     public void testAwordedCrackBoardWithClassicBag() {
-        Engine engine = new Engine(new AwordedCrackBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        Engine engine = new Engine(new AwordedCrackBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetter(0, 0, "c");
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
@@ -69,7 +69,7 @@ public class TestEngine {
     @Test
     public void testPoints() {
         /*
-        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        Engine engine = new Engine(new ClassicBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetter(0, 0, "c");
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
@@ -98,7 +98,7 @@ public class TestEngine {
 
     @Test
     public void test() {
-        Engine engine = new Engine(new ClassicBoardFactory(), new TextDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        Engine engine = new Engine(new ClassicBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetter(7, 7, "e");
         engine.placeLetter(8, 7, "g");
         engine.placeLetter(9, 7, "o");

@@ -1,4 +1,7 @@
-package com.axiastudio.scrabbler.dictionary;
+package com.axiastudio.scrabbler.customs.classic;
+
+import com.axiastudio.scrabbler.dictionary.AbstractDictionary;
+import com.axiastudio.scrabbler.dictionary.Dictionary;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
-public class TextDictionary extends AbstractDictionary implements Dictionary {
+public class ClassicDictionary extends AbstractDictionary implements Dictionary {
 
 
     protected Logger LOGGER = Logger.getLogger(this.getClass().getName());
