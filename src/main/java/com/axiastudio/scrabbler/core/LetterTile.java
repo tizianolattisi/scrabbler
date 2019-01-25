@@ -1,7 +1,5 @@
 package com.axiastudio.scrabbler.core;
 
-import com.axiastudio.scrabbler.core.Tile;
-
 public class LetterTile implements Tile {
 
     protected String letter;
