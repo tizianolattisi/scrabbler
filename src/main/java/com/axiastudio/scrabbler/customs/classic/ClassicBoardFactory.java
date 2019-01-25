@@ -1,7 +1,7 @@
 package com.axiastudio.scrabbler.customs.classic;
 
-import com.axiastudio.scrabbler.core.Board;
-import com.axiastudio.scrabbler.core.BoardFactory;
+import com.axiastudio.scrabbler.board.Board;
+import com.axiastudio.scrabbler.board.BoardFactory;
 import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.core.LetterOrWord;
 import com.axiastudio.scrabbler.core.Square;

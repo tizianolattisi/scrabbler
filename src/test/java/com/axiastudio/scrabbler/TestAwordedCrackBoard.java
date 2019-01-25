@@ -2,7 +2,7 @@ package com.axiastudio.scrabbler;
 
 import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.customs.awordedcrack.AwordedCrackBoardFactory;
-import com.axiastudio.scrabbler.core.Board;
+import com.axiastudio.scrabbler.board.Board;
 import com.axiastudio.scrabbler.core.Square;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;

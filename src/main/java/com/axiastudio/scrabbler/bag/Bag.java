@@ -1,4 +1,6 @@
-package com.axiastudio.scrabbler.core;
+package com.axiastudio.scrabbler.bag;
+
+import com.axiastudio.scrabbler.core.Tile;
 
 public interface Bag {
 

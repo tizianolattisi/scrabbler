@@ -1,7 +1,7 @@
 package com.axiastudio.scrabbler.customs.classic;
 
 import com.axiastudio.scrabbler.bag.AbstractBag;
-import com.axiastudio.scrabbler.core.Bag;
+import com.axiastudio.scrabbler.bag.Bag;
 
 import java.util.HashMap;
 import java.util.Map;

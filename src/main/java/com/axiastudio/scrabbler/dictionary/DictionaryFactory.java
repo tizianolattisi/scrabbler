@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler.core;
+package com.axiastudio.scrabbler.dictionary;
 
 public interface DictionaryFactory {
 

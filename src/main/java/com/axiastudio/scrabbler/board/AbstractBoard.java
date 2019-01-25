@@ -1,6 +1,5 @@
 package com.axiastudio.scrabbler.board;
 
-import com.axiastudio.scrabbler.core.Board;
 import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Tile;

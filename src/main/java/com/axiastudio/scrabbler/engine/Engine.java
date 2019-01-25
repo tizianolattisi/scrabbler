@@ -1,13 +1,13 @@
 package com.axiastudio.scrabbler.engine;
 
-import com.axiastudio.scrabbler.core.Bag;
-import com.axiastudio.scrabbler.core.BagFactory;
-import com.axiastudio.scrabbler.core.Board;
-import com.axiastudio.scrabbler.core.BoardFactory;
+import com.axiastudio.scrabbler.bag.Bag;
+import com.axiastudio.scrabbler.bag.BagFactory;
+import com.axiastudio.scrabbler.board.Board;
+import com.axiastudio.scrabbler.board.BoardFactory;
 import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.core.Square;
-import com.axiastudio.scrabbler.core.Dictionary;
-import com.axiastudio.scrabbler.core.DictionaryFactory;
+import com.axiastudio.scrabbler.dictionary.Dictionary;
+import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
 import com.axiastudio.scrabbler.core.Pattern;
 
 import java.util.List;

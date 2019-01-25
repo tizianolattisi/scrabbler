@@ -2,7 +2,10 @@
 
 package "scrabbler" {
 [engine] --> [core]
-[dictionary] --> [core]
+[engine] --> [bag]
+[engine] --> [board]
+[engine] --> [dictionary]
+[dictionary]
 [core]
 [board] --> [core]
 [bag] --> [core]

@@ -1,7 +1,5 @@
 package com.axiastudio.scrabbler.dictionary;
 
-import com.axiastudio.scrabbler.core.Dictionary;
-
 import java.util.ArrayList;
 import java.util.List;
 
