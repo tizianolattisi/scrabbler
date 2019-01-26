@@ -97,7 +97,7 @@ public abstract class AbstractBoard implements Board {
                 remainingLetters--;
             }
             moveCursorForward(orientation, cursor);
-            if ((!isInBoard(cursor) || getSquare(cursor).isEmpty()) && patternUnderConstruction.isValid()) {
+            if ((!isInBoard(cursor) || getSquare(cursor).isEmpty()) && remainingLetters<7 && patternUnderConstruction.isValid()) {
                 Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
                 patterns.add(newPatternWithSameSquares);
             }
