@@ -103,4 +103,24 @@ public class Engine {
         return letters;
     }
 
+    public Integer calculatePoints(Pattern solution) {
+        Position cursor = new Position(solution.position().get());
+        Orientation orientation = solution.orientation().get();
+        Integer points = 0;
+        for (int i=0; i<solution.length(); i++) {
+            Square squareAtCursor = board.getSquare(cursor);
+            if (squareAtCursor.isMultiplicatorForLetter()) {
+                points += squareAtCursor.getMultiplicator();
+            } else {
+                points += 1;
+            }
+            if (orientation.equals(Orientation.HORIZONTAL)) {
+                cursor.horizontalForwardShift();
+            } else {
+                cursor.verticalForwardShift();
+            }
+        }
+        return points;
+    }
+
 }
