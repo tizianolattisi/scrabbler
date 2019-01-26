@@ -2,17 +2,24 @@ package com.axiastudio.scrabbler.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Pattern {
 
     private List<Square> squares;
+    private Optional<Orientation> orientation;
+    private Optional<Position> position;
 
     public Pattern() {
+        this.orientation = Optional.empty();
+        this.position = Optional.empty();
         squares = new ArrayList<>();
     }
 
-    public Pattern(List<Square> squares) {
-        this.squares = squares;
+    public Pattern(Position position, Orientation orientation) {
+        this.orientation = Optional.of(orientation);
+        this.position = Optional.of(position);
+        this.squares = new ArrayList<>();
     }
 
     public Pattern addSquare() {
@@ -26,7 +33,12 @@ public class Pattern {
     }
 
     public Pattern createNewPatternWithSameSquares() {
-        Pattern newPattern = new Pattern();
+        Pattern newPattern;
+        if (position.isPresent() && orientation.isPresent()) {
+            newPattern = new Pattern(position.get(), orientation.get());
+        } else {
+            newPattern = new Pattern();
+        }
         squares.stream().forEach(square -> newPattern.addSquare(new Square(square.getMultiplicator(),
                 square.isMultiplicatorForLetter() ? LetterOrWord.LETTER : LetterOrWord.WORD,
                 square.getTile())));
@@ -55,6 +67,14 @@ public class Pattern {
 
     public String word() {
         return squares.stream().map(t -> t.isEmpty() ? "-" : t.getTile().letter()).reduce(String::concat).get();
+    }
+
+    public Optional<Position> position() {
+        return position;
+    }
+
+    public Optional<Orientation> orientation() {
+        return orientation;
     }
 
     @Override

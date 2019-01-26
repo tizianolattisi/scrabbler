@@ -1,9 +1,6 @@
 package com.axiastudio.scrabbler.board;
 
-import com.axiastudio.scrabbler.core.Position;
-import com.axiastudio.scrabbler.core.Square;
-import com.axiastudio.scrabbler.core.Tile;
-import com.axiastudio.scrabbler.core.Pattern;
+import com.axiastudio.scrabbler.core.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -74,25 +71,25 @@ public abstract class AbstractBoard implements Board {
     }
 
     private List<Pattern> findHorizontalPatternFromPosition(Position position) {
-        return findVerticalPatternFromPosition(position, Boolean.FALSE);
+        return findPatternFromPositionAndOrientation(position, Orientation.HORIZONTAL);
 
     }
 
     private List<Pattern> findVerticalPatternFromPosition(Position position) {
-        return findVerticalPatternFromPosition(position, Boolean.TRUE);
+        return findPatternFromPositionAndOrientation(position, Orientation.VERTICAL);
     }
 
-    private List<Pattern> findVerticalPatternFromPosition(Position position, Boolean vertical) {
+    private List<Pattern> findPatternFromPositionAndOrientation(Position position, Orientation orientation) {
         List<Pattern> patterns = new ArrayList<>();
         Integer numberOfLetters = 7;
-        Pattern actualPattern = new Pattern();
+        Pattern actualPattern = new Pattern(new Position(Integer.valueOf(position.getX()), position.getX()), orientation);
         actualPattern.addSquare(getSquare(position));
         numberOfLetters--;
         while (numberOfLetters > 0 && isInBoard(position)) {
-            if (vertical) {
-                position.verticalShift();
+            if (Orientation.VERTICAL.equals(orientation)) {
+                position.verticalForwardShift();
             } else {
-                position.horizontalShift();
+                position.horizontalForwardShift();
             }
             Square nextSquare = getSquare(position);
             actualPattern.addSquare(nextSquare);
@@ -100,7 +97,8 @@ public abstract class AbstractBoard implements Board {
                 numberOfLetters--;
             }
             if (actualPattern.isValid()) {
-                patterns.add(actualPattern.createNewPatternWithSameSquares());
+                Pattern newPatternWithSameSquares = actualPattern.createNewPatternWithSameSquares();
+                patterns.add(newPatternWithSameSquares);
             }
         }
         return patterns;
