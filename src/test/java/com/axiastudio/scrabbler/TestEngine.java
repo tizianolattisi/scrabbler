@@ -67,6 +67,33 @@ public class TestEngine {
     }
 
     @Test
+    public void testLettersPlacingFromStringArray() {
+        String[] lettersToPlace = {
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "       casa    ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               "
+        };
+        Engine engine = new Engine(new AwordedCrackBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        engine.placeLetters(lettersToPlace);
+        String lettersInYourHand = "dahqrnf";
+        List<String> solutions = engine.findSolutions(lettersInYourHand).stream()
+                .map(Pattern::word)
+                .collect(Collectors.toList());
+    }
+
+    @Test
     public void testPoints() {
         /*
         Engine engine = new Engine(new ClassicBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
