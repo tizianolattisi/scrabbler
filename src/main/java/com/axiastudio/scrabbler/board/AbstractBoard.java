@@ -80,24 +80,28 @@ public abstract class AbstractBoard implements Board {
     }
 
     private List<Pattern> findPatternFromPositionAndOrientation(Position position, Orientation orientation) {
+        Position cursor = new Position(position);
         List<Pattern> patterns = new ArrayList<>();
-        Integer numberOfLetters = 7;
-        Pattern actualPattern = new Pattern(new Position(Integer.valueOf(position.getX()), position.getX()), orientation);
-        actualPattern.addSquare(getSquare(position));
-        numberOfLetters--;
-        while (numberOfLetters > 0 && isInBoard(position)) {
+        Integer remainingLetters = 7;
+        Pattern patternUnderConstruction = new Pattern(new Position(position), orientation);
+        Square firstSquare = getSquare(cursor);
+        patternUnderConstruction.addSquare(firstSquare);
+        if (firstSquare.isEmpty()) {
+            remainingLetters--;
+        }
+        while (remainingLetters > 0 && isInBoard(cursor)) {
             if (Orientation.VERTICAL.equals(orientation)) {
-                position.verticalForwardShift();
+                cursor.verticalForwardShift();
             } else {
-                position.horizontalForwardShift();
+                cursor.horizontalForwardShift();
             }
-            Square nextSquare = getSquare(position);
-            actualPattern.addSquare(nextSquare);
+            Square nextSquare = getSquare(cursor);
+            patternUnderConstruction.addSquare(nextSquare);
             if (nextSquare.isEmpty()) {
-                numberOfLetters--;
+                remainingLetters--;
             }
-            if (actualPattern.isValid()) {
-                Pattern newPatternWithSameSquares = actualPattern.createNewPatternWithSameSquares();
+            if (patternUnderConstruction.isValid()) {
+                Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
                 patterns.add(newPatternWithSameSquares);
             }
         }
