@@ -53,6 +53,31 @@ public class TestGame1 {
         Assertions.assertEquals("ammirati", upperBoundSolutions.get(0).word());
     }
 
+    @Test
+    public void testRound2() {
+        String[] lettersToPlace = {
+                "      a        ",
+                "      m        ",
+                "      m        ",
+                "      i        ",
+                "     or        ",
+                "     ha        ",
+                "      t        ",
+                "   sazio       ", // central
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "aaqhbao";
+        List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
+        printPatterns(upperBoundSolutions);
+    }
+
     private List<Pattern> findUpperBoundSolutions(List<Pattern> solutions) {
         List<Pattern> upperBoudSolutions = new ArrayList<>();
         Integer currentBound = 0;
