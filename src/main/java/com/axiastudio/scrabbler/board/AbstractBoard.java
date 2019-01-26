@@ -89,23 +89,32 @@ public abstract class AbstractBoard implements Board {
         if (firstSquare.isEmpty()) {
             remainingLetters--;
         }
-        while (remainingLetters > 0 && isInBoard(cursor)) {
-            if (Orientation.VERTICAL.equals(orientation)) {
-                cursor.verticalForwardShift();
-            } else {
-                cursor.horizontalForwardShift();
-            }
+        moveCursorForward(orientation, cursor);
+        while (shouldWeMoveToNextSquare(cursor, remainingLetters)) {
             Square nextSquare = getSquare(cursor);
             patternUnderConstruction.addSquare(nextSquare);
             if (nextSquare.isEmpty()) {
                 remainingLetters--;
             }
-            if (patternUnderConstruction.isValid()) {
+            moveCursorForward(orientation, cursor);
+            if ((!isInBoard(cursor) || getSquare(cursor).isEmpty()) && patternUnderConstruction.isValid()) {
                 Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
                 patterns.add(newPatternWithSameSquares);
             }
         }
         return patterns;
+    }
+
+    private boolean shouldWeMoveToNextSquare(Position cursor, Integer remainingLetters) {
+        return isInBoard(cursor) && (!getSquare(cursor).isEmpty() || remainingLetters > 0);
+    }
+
+    private void moveCursorForward(Orientation orientation, Position cursor) {
+        if (Orientation.VERTICAL.equals(orientation)) {
+            cursor.verticalForwardShift();
+        } else {
+            cursor.horizontalForwardShift();
+        }
     }
 
 }
