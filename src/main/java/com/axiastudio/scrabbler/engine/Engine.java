@@ -4,11 +4,9 @@ import com.axiastudio.scrabbler.bag.Bag;
 import com.axiastudio.scrabbler.bag.BagFactory;
 import com.axiastudio.scrabbler.board.Board;
 import com.axiastudio.scrabbler.board.BoardFactory;
-import com.axiastudio.scrabbler.core.Position;
-import com.axiastudio.scrabbler.core.Square;
+import com.axiastudio.scrabbler.core.*;
 import com.axiastudio.scrabbler.dictionary.Dictionary;
 import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
-import com.axiastudio.scrabbler.core.Pattern;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +25,24 @@ public class Engine {
 
     public void placeLetter(Integer x, Integer y, String letter) {
         board.placeTileAtPosition(new Position(x, y), bag.extractTileByLetter(letter));
+    }
+
+    public void placeLetters(String[] rowsOfLetters) {
+        assert rowsOfLetters.length==board.size();
+        for (int j=0; j<board.size(); j++) {
+            String rowOfLetters = rowsOfLetters[j];
+            assert rowOfLetters.length()==board.size();
+            for (int i=0; i<board.size(); i++) {
+                String letter = String.valueOf(rowOfLetters.charAt(i));
+                if (isALetter(letter)) {
+                    placeLetter(i, j, letter);
+                }
+            }
+        }
+    }
+
+    private Boolean isALetter(String maybeALetter) {
+        return !" ".equals(maybeALetter);
     }
 
     public List<Pattern> findSolutions(String lettersInYourHand) {
