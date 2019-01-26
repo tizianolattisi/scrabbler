@@ -11,6 +11,11 @@ public class Position {
         this.y = y;
     }
 
+    public Position(Position position) {
+        this.x = Integer.valueOf(position.getX());
+        this.y = Integer.valueOf(position.getY());
+    }
+
     public Integer getX() {
         return x;
     }
