@@ -60,7 +60,7 @@ public abstract class AbstractBoard implements Board {
     }
 
     private boolean isInBoard(Position position) {
-        return position.getX()<size-1 && position.getY()<size-1;
+        return position.getX()>=0 && position.getY()>=0 && position.getX()<size-1 && position.getY()<size-1;
     }
 
     private List<Pattern> findPatternFromPosition(Position position) {
@@ -80,29 +80,41 @@ public abstract class AbstractBoard implements Board {
     }
 
     private List<Pattern> findPatternFromPositionAndOrientation(Position position, Orientation orientation) {
-        Position cursor = new Position(position);
         List<Pattern> patterns = new ArrayList<>();
-        Integer remainingLetters = 7;
-        Pattern patternUnderConstruction = new Pattern(new Position(position), orientation);
-        Square firstSquare = getSquare(cursor);
-        patternUnderConstruction.addSquare(firstSquare);
-        if (firstSquare.isEmpty()) {
-            remainingLetters--;
-        }
-        moveCursorForward(orientation, cursor);
-        while (shouldWeMoveToNextSquare(cursor, remainingLetters)) {
-            Square nextSquare = getSquare(cursor);
-            patternUnderConstruction.addSquare(nextSquare);
-            if (nextSquare.isEmpty()) {
+        if (isAValidStartingSquare(position, orientation)) {
+            Position cursor = new Position(position);
+            Integer remainingLetters = 7;
+            Pattern patternUnderConstruction = new Pattern(new Position(position), orientation);
+            Square firstSquare = getSquare(cursor);
+            patternUnderConstruction.addSquare(firstSquare);
+            if (firstSquare.isEmpty()) {
                 remainingLetters--;
             }
             moveCursorForward(orientation, cursor);
-            if ((!isInBoard(cursor) || getSquare(cursor).isEmpty()) && remainingLetters<7 && patternUnderConstruction.isValid()) {
-                Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
-                patterns.add(newPatternWithSameSquares);
+            while (shouldWeMoveToNextSquare(cursor, remainingLetters)) {
+                Square nextSquare = getSquare(cursor);
+                patternUnderConstruction.addSquare(nextSquare);
+                if (nextSquare.isEmpty()) {
+                    remainingLetters--;
+                }
+                moveCursorForward(orientation, cursor);
+                if ((!isInBoard(cursor) || getSquare(cursor).isEmpty()) && remainingLetters<7 && patternUnderConstruction.isValid()) {
+                    Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
+                    patterns.add(newPatternWithSameSquares);
+                }
             }
         }
         return patterns;
+    }
+
+    private Boolean isAValidStartingSquare(Position position, Orientation orientation) {
+        Position cursor = new Position(position);
+        if (orientation.equals(Orientation.HORIZONTAL)) {
+            cursor.horizontalBackwardShift();
+        } else {
+            cursor.verticalBackwardShift();
+        }
+        return !isInBoard(cursor) || getSquare(cursor).isEmpty();
     }
 
     private boolean shouldWeMoveToNextSquare(Position cursor, Integer remainingLetters) {
