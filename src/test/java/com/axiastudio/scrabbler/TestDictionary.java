@@ -51,30 +51,4 @@ public class TestDictionary {
         Assertions.assertEquals(4, pattern.length());
     }
 
-    @Test
-    public void testValidPattern() {
-        Pattern pattern = new Pattern()
-                .addSquare()
-                .addSquare(new Square(3, LetterOrWord.LETTER))
-                .addSquare(new Square(new LetterTile("a")))
-                .addSquare();
-        Assertions.assertTrue(pattern.isValid());
-    }
-
-    @Test
-    public void testInvalidEmptyPattern() {
-        Pattern emptyPattern = new Pattern()
-                .addSquare()
-                .addSquare()
-                .addSquare();
-        Assertions.assertFalse(emptyPattern.isValid());
-    }
-
-    @Test
-    public void testInvalidShortPattern() {
-        Pattern emptyPattern = new Pattern()
-                .addSquare();
-        Assertions.assertFalse(emptyPattern.isValid());
-    }
-
 }
