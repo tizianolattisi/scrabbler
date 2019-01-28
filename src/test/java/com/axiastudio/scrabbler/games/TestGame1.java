@@ -50,7 +50,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "mraatim";
         List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
-        //Assertions.assertEquals("ammirati", upperBoundSolutions.get(0).word());
+        // ammirati
     }
 
     @Test
@@ -76,12 +76,13 @@ public class TestGame1 {
         String lettersInMyHand = "aaqhbao";
         List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
         printPatterns(upperBoundSolutions);
+        // amba
     }
 
     @Test
     public void testRound3() {
         String[] lettersToPlace = {
-                "      a        ",
+                "      a cuvee  ",
                 "     amba      ",
                 "      m        ",
                 "      i        ",
@@ -101,6 +102,7 @@ public class TestGame1 {
         String lettersInMyHand = "coqhiua";
         List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
         printPatterns(upperBoundSolutions);
+        // acqua
     }
 
     private List<Pattern> findUpperBoundSolutions(List<Pattern> solutions) {
