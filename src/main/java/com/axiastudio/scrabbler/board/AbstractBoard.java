@@ -98,7 +98,11 @@ public abstract class AbstractBoard implements Board {
                     remainingLetters--;
                 }
                 moveCursorForward(orientation, cursor);
-                if ((!isInBoard(cursor) || getSquare(cursor).isEmpty()) && remainingLetters<7 && patternUnderConstruction.isValid()) {
+                Boolean theNextSquareIsNotInBoard = !isInBoard(cursor);
+                Boolean theNextSquareIsEmpty = getSquare(cursor).isEmpty();
+                Boolean atLeastOneLetterUsed = remainingLetters < 7;
+                Boolean withMinLenghtAndNotEmpty = patternUnderConstruction.isValid();
+                if ((theNextSquareIsNotInBoard || theNextSquareIsEmpty) && atLeastOneLetterUsed && withMinLenghtAndNotEmpty) {
                     Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
                     patterns.add(newPatternWithSameSquares);
                 }
@@ -108,13 +112,38 @@ public abstract class AbstractBoard implements Board {
     }
 
     private Boolean isAValidStartingSquare(Position position, Orientation orientation) {
+        Position previousSquare = getPreviousSquare(position, orientation);
+        Boolean previousQuareNotInBoard = !isInBoard(previousSquare);
+        Boolean previousSquareEmpty = !previousQuareNotInBoard && getSquare(previousSquare).isEmpty();
+        return previousQuareNotInBoard || previousSquareEmpty;
+    }
+
+    private Position getPreviousSquare(Position position, Orientation orientation) {
         Position cursor = new Position(position);
         if (orientation.equals(Orientation.HORIZONTAL)) {
             cursor.horizontalBackwardShift();
         } else {
             cursor.verticalBackwardShift();
         }
-        return !isInBoard(cursor) || getSquare(cursor).isEmpty();
+        return cursor;
+    }
+
+    private Boolean rangeIsEmpty(Position start, Position end) {
+        while (start==end) {
+            if (!getSquare(start).isEmpty()) {
+                return Boolean.TRUE;
+            }
+            while (start.getY()<=end.getY()) {
+                while (start.getX() <= end.getX()) {
+                    start.horizontalForwardShift();
+                    if (!getSquare(start).isEmpty()) {
+                        return Boolean.TRUE;
+                    }
+                }
+                start.verticalForwardShift();
+            }
+        }
+        return Boolean.FALSE;
     }
 
     private boolean shouldWeMoveToNextSquare(Position cursor, Integer remainingLetters) {
