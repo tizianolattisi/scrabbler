@@ -1,4 +1,4 @@
-package com.axiastudio.scrabbler;
+package com.axiastudio.scrabbler.test;
 
 import com.axiastudio.scrabbler.customs.classic.ClassicBag;
 import com.axiastudio.scrabbler.bag.Bag;
