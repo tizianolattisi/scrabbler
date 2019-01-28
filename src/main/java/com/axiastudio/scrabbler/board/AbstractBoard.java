@@ -112,13 +112,13 @@ public abstract class AbstractBoard implements Board {
     }
 
     private Boolean isAValidStartingSquare(Position position, Orientation orientation) {
-        Position previousSquare = getPreviousSquare(position, orientation);
-        Boolean previousQuareNotInBoard = !isInBoard(previousSquare);
-        Boolean previousSquareEmpty = !previousQuareNotInBoard && getSquare(previousSquare).isEmpty();
-        return previousQuareNotInBoard || previousSquareEmpty;
+        Position previousPosition = getPreviousPosition(position, orientation);
+        Boolean previousPositionNotInBoard = !isInBoard(previousPosition);
+        Boolean previousSquareEmpty = !previousPositionNotInBoard && getSquare(previousPosition).isEmpty();
+        return previousPositionNotInBoard || previousSquareEmpty;
     }
 
-    private Position getPreviousSquare(Position position, Orientation orientation) {
+    private Position getPreviousPosition(Position position, Orientation orientation) {
         Position cursor = new Position(position);
         if (orientation.equals(Orientation.HORIZONTAL)) {
             cursor.horizontalBackwardShift();
