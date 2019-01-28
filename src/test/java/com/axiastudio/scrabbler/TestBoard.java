@@ -9,6 +9,7 @@ import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Pattern;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -33,10 +34,19 @@ public class TestBoard {
     }
 
     @Test
-    public void testPatternsDiscover() {
-        board.placeTileAtPosition(new Position(1, 0), bag.extractTileByLetter("z"));
+    public void testPatternsDiscoverLetterInCorner() {
+        board.placeTileAtPosition(new Position(0, 0), bag.extractTileByLetter("z"));
         List<Pattern> possiblesPatterns = board.findPossiblesPatterns();
         Assertions.assertFalse(possiblesPatterns.isEmpty());
+        Assertions.assertEquals(26, possiblesPatterns.size());
+    }
+
+    @Test
+    public void testPatternsDiscoverCentralLetter() {
+        board.placeTileAtPosition(new Position(6, 6), bag.extractTileByLetter("z"));
+        List<Pattern> possiblesPatterns = board.findPossiblesPatterns();
+        Assertions.assertFalse(possiblesPatterns.isEmpty());
+        Assertions.assertEquals(131, possiblesPatterns.size());
     }
 
 }

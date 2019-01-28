@@ -92,17 +92,16 @@ public abstract class AbstractBoard implements Board {
             }
             moveCursorForward(orientation, cursor);
             while (shouldWeAddCurrentSquare(cursor, remainingLetters)) {
-                Square cuurrentSquare = getSquare(cursor);
-                patternUnderConstruction.addSquare(cuurrentSquare);
-                if (cuurrentSquare.isEmpty()) {
+                Square currentSquare = getSquare(cursor);
+                patternUnderConstruction.addSquare(currentSquare);
+                if (currentSquare.isEmpty()) {
                     remainingLetters--;
                 }
                 moveCursorForward(orientation, cursor);
                 Boolean theNextSquareIsNotInBoard = !isInBoard(cursor);
-                Boolean theNextSquareIsEmpty = getSquare(cursor).isEmpty();
                 Boolean atLeastOneLetterUsed = remainingLetters < 7;
-                Boolean withMinLenghtAndNotEmpty = patternUnderConstruction.isValid();
-                if ((theNextSquareIsNotInBoard || theNextSquareIsEmpty) && atLeastOneLetterUsed && withMinLenghtAndNotEmpty) {
+                Boolean withMinLenght = patternUnderConstruction.length()>1;
+                if ((theNextSquareIsNotInBoard || getSquare(cursor).isEmpty()) && atLeastOneLetterUsed && withMinLenght && crossWithAtLeastALetter(patternUnderConstruction)) {
                     Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
                     patterns.add(newPatternWithSameSquares);
                 }
@@ -128,26 +127,38 @@ public abstract class AbstractBoard implements Board {
         return cursor;
     }
 
-    private Boolean rangeIsEmpty(Position start, Position end) {
-        while (start==end) {
-            if (!getSquare(start).isEmpty()) {
-                return Boolean.TRUE;
-            }
-            while (start.getY()<=end.getY()) {
-                while (start.getX() <= end.getX()) {
-                    start.horizontalForwardShift();
-                    if (!getSquare(start).isEmpty()) {
-                        return Boolean.TRUE;
-                    }
+    private Boolean crossWithAtLeastALetter(Pattern pattern) {
+        assert pattern.position().isPresent();
+        assert pattern.orientation().isPresent();
+        Position position = pattern.position().get();
+        Orientation orientation = pattern.orientation().get();
+        Integer fromX;
+        Integer toX;
+        Integer fromY;
+        Integer toY;
+        if (Orientation.HORIZONTAL.equals(orientation)) {
+            fromX = position.getX();
+            toX = fromX + pattern.length() - 1;
+            fromY = position.getY()>0 ? position.getY()-1 : position.getY();
+            toY = position.getY()<size-1 ? position.getY()+1 : position.getY();
+        } else {
+            fromY = position.getY();
+            toY = fromY + pattern.length() - 1;
+            fromX = position.getX()>0 ? position.getX()-1 : position.getX();
+            toX = position.getX()<size-1 ? position.getX()+1 : position.getX();
+        }
+        for (int i=fromX; i<=toX; i++) {
+            for (int j=fromY; j<toY; j++) {
+                if (!getSquare(new Position(i, j)).isEmpty()) {
+                    return Boolean.TRUE;
                 }
-                start.verticalForwardShift();
             }
         }
         return Boolean.FALSE;
     }
 
-    private boolean shouldWeAddCurrentSquare(Position cursor, Integer remainingLetters) {
-        return isInBoard(cursor) && (!getSquare(cursor).isEmpty() || remainingLetters > 0);
+    private boolean shouldWeAddCurrentSquare(Position position, Integer remainingLetters) {
+        return isInBoard(position) && (!getSquare(position).isEmpty() || remainingLetters > 0);
     }
 
     private void moveCursorForward(Orientation orientation, Position cursor) {
