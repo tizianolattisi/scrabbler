@@ -50,7 +50,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "mraatim";
         List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
-        Assertions.assertEquals("ammirati", upperBoundSolutions.get(0).word());
+        //Assertions.assertEquals("ammirati", upperBoundSolutions.get(0).word());
     }
 
     @Test
@@ -78,6 +78,31 @@ public class TestGame1 {
         printPatterns(upperBoundSolutions);
     }
 
+    @Test
+    public void testRound3() {
+        String[] lettersToPlace = {
+                "      a        ",
+                "     amba      ",
+                "      m        ",
+                "      i        ",
+                "     or        ",
+                "     ha        ",
+                "      t        ",
+                "   sazio       ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "coqhiua";
+        List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
+        printPatterns(upperBoundSolutions);
+    }
+
     private List<Pattern> findUpperBoundSolutions(List<Pattern> solutions) {
         List<Pattern> upperBoudSolutions = new ArrayList<>();
         Integer currentBound = 0;
@@ -99,7 +124,7 @@ public class TestGame1 {
     private void printPatterns(List<Pattern> patterns) {
         for (Pattern pattern: patterns) {
             Position position = pattern.position().get();
-            String out = pattern.word() + " (" + position.getX() + ", " + position.getY() + ")";
+            String out = pattern.word() + " (" + position.getX() + ", " + position.getY() + ") ";
             System.out.println(out);
         }
     }
