@@ -7,10 +7,7 @@ import com.axiastudio.scrabbler.customs.classic.ClassicBoardFactory;
 import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Pattern;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
@@ -19,8 +16,8 @@ public class TestBoard {
     private static Board board;
     private static Bag bag;
 
-    @BeforeAll
-    public static void initializeTestEnvironment() {
+    @BeforeEach
+    public void initializeTestEnvironment() {
         board = new ClassicBoardFactory().buildAndInitialize();
         bag = new ClassicBag();
     }
