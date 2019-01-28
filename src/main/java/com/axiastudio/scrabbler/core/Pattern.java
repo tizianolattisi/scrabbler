@@ -40,7 +40,7 @@ public class Pattern {
             newPattern = new Pattern();
         }
         squares.stream().forEach(square -> newPattern.addSquare(new Square(square.getMultiplicator(),
-                square.isMultiplicatorForLetter() ? LetterOrWord.LETTER : LetterOrWord.WORD,
+                square.getMultipliactorFor(),
                 square.getTile())));
         return newPattern;
     }
