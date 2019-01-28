@@ -91,10 +91,10 @@ public abstract class AbstractBoard implements Board {
                 remainingLetters--;
             }
             moveCursorForward(orientation, cursor);
-            while (shouldWeMoveToNextSquare(cursor, remainingLetters)) {
-                Square nextSquare = getSquare(cursor);
-                patternUnderConstruction.addSquare(nextSquare);
-                if (nextSquare.isEmpty()) {
+            while (shouldWeAddCurrentSquare(cursor, remainingLetters)) {
+                Square cuurrentSquare = getSquare(cursor);
+                patternUnderConstruction.addSquare(cuurrentSquare);
+                if (cuurrentSquare.isEmpty()) {
                     remainingLetters--;
                 }
                 moveCursorForward(orientation, cursor);
@@ -146,7 +146,7 @@ public abstract class AbstractBoard implements Board {
         return Boolean.FALSE;
     }
 
-    private boolean shouldWeMoveToNextSquare(Position cursor, Integer remainingLetters) {
+    private boolean shouldWeAddCurrentSquare(Position cursor, Integer remainingLetters) {
         return isInBoard(cursor) && (!getSquare(cursor).isEmpty() || remainingLetters > 0);
     }
 
