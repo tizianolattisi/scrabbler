@@ -107,12 +107,17 @@ public class Engine {
         Position cursor = new Position(solution.position().get());
         Orientation orientation = solution.orientation().get();
         Integer points = 0;
+        Integer wordMultiplicator = 1;
         for (int i=0; i<solution.length(); i++) {
             Square squareAtCursor = board.getSquare(cursor);
+            Tile tile = solution.getSquare(i).getTile();
             if (squareAtCursor.isMultiplicatorForLetter()) {
-                points += squareAtCursor.getMultiplicator();
+                points += squareAtCursor.getMultiplicator() * tile.points();
             } else {
-                points += 1;
+                points += tile.points();
+            }
+            if (squareAtCursor.isMultiplicatorForWord()) {
+                wordMultiplicator += squareAtCursor.getMultiplicator();
             }
             if (orientation.equals(Orientation.HORIZONTAL)) {
                 cursor.horizontalForwardShift();
@@ -120,7 +125,7 @@ public class Engine {
                 cursor.verticalForwardShift();
             }
         }
-        return points;
+        return points * wordMultiplicator;
     }
 
 }
