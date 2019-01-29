@@ -186,30 +186,4 @@ public class TestGame1 {
         // ?
     }
 
-    private List<Pattern> findUpperBoundSolutions(List<Pattern> solutions) {
-        List<Pattern> upperBoudSolutions = new ArrayList<>();
-        Integer currentBound = 0;
-        for (int i=0; i<solutions.size(); i++) {
-            Pattern solutionToCheck = solutions.get(i);
-            Integer points = engine.calculatePoints(solutionToCheck);
-            if (points>currentBound) {
-                upperBoudSolutions.clear();
-                upperBoudSolutions.add(solutionToCheck);
-                currentBound = points;
-            } else if (points==currentBound) {
-                upperBoudSolutions.add(solutionToCheck);
-            }
-        }
-        return upperBoudSolutions;
-    }
-
-    private void printPatterns(List<Pattern> patterns) {
-        for (Pattern pattern: patterns) {
-            Position position = pattern.position().get();
-            Orientation orientation = pattern.orientation().get();
-            String out = pattern.word() + " " + position + " " + orientation;
-            System.out.println(out);
-        }
-    }
-
 }
