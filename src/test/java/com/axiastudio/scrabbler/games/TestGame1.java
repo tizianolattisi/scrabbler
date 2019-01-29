@@ -1,5 +1,6 @@
 package com.axiastudio.scrabbler.games;
 
+import com.axiastudio.scrabbler.core.Orientation;
 import com.axiastudio.scrabbler.core.Pattern;
 import com.axiastudio.scrabbler.core.Position;
 import com.axiastudio.scrabbler.customs.awordedcrack.AwordedCrackBoardFactory;
@@ -105,6 +106,33 @@ public class TestGame1 {
         // acqua
     }
 
+    @Test
+    public void testRound4() {
+        String[] lettersToPlace = {
+                "  acqua cuvee  ",
+                "     amba      ",
+                "      m        ",
+                "      i        ",
+                "     or        ",
+                "     ha        ",
+                "      t        ",
+                "   sazio       ",
+                "   b           ",
+                "   a           ",
+                "   v           ",
+                "   o           ",
+                "               ",
+                "               ",
+                "               "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "eogihif";
+        List<Pattern> solutions = engine.findSolutions(lettersInMyHand);
+        List<Pattern> upperBoundSolutions = findUpperBoundSolutions(solutions);
+        printPatterns(upperBoundSolutions);
+        // ghie
+    }
+
     private List<Pattern> findUpperBoundSolutions(List<Pattern> solutions) {
         List<Pattern> upperBoudSolutions = new ArrayList<>();
         Integer currentBound = 0;
@@ -126,7 +154,8 @@ public class TestGame1 {
     private void printPatterns(List<Pattern> patterns) {
         for (Pattern pattern: patterns) {
             Position position = pattern.position().get();
-            String out = pattern.word() + " (" + position.getX() + ", " + position.getY() + ") ";
+            Orientation orientation = pattern.orientation().get();
+            String out = pattern.word() + " " + position + " " + orientation;
             System.out.println(out);
         }
     }
