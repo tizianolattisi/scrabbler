@@ -13,5 +13,6 @@ public interface Board {
     void placeTileAtPosition(Position position, Tile tile);
     List<Pattern> findPossiblesPatterns();
     Integer size();
+    Boolean isInBoard(Position position);
 
 }

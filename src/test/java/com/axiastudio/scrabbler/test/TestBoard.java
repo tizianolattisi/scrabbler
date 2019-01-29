@@ -46,4 +46,16 @@ public class TestBoard {
         Assertions.assertEquals(131, possiblesPatterns.size());
     }
 
+    @Test
+    public void testPositionInBoard() {
+        Assertions.assertTrue(board.isInBoard(new Position(0, 0)));
+        Assertions.assertTrue(board.isInBoard(new Position(4, 3)));
+    }
+
+    @Test
+    public void testPositionNotInBoard() {
+        Assertions.assertFalse(board.isInBoard(new Position(-1, 0)));
+        Assertions.assertFalse(board.isInBoard(new Position(4, board.size())));
+    }
+
 }

@@ -59,7 +59,8 @@ public abstract class AbstractBoard implements Board {
         return possiblesPatterns;
     }
 
-    private boolean isInBoard(Position position) {
+    @Override
+    public Boolean isInBoard(Position position) {
         return position.getX()>=0 && position.getY()>=0 && position.getX()<size-1 && position.getY()<size-1;
     }
 
