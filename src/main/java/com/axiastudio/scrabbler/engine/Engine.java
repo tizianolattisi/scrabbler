@@ -113,7 +113,6 @@ public class Engine {
         Position position = solution.position().get();
         Boolean validSolution = Boolean.TRUE;
         if (Orientation.HORIZONTAL.equals(orientation)) {
-
             for (int i=0; i<solution.length()-1; i++) {
                 Integer x = position.getX()+i;
                 Integer y = Integer.valueOf(position.getY());
@@ -142,18 +141,16 @@ public class Engine {
         String crossingWord = centralLetter;
         if (Orientation.HORIZONTAL.equals(orientation)) {
             Position backwardCursor = new Position(position);
-            while (board.isInBoard(backwardCursor.verticalBackwardShift())) {
+            while (isAdjacentTile(backwardCursor.verticalBackwardShift())) {
                 Square square = board.getSquare(backwardCursor);
                 if (!square.isEmpty()) {
                     crossingWord = square.getTile().letter() + crossingWord;
                 }
             }
             Position forwardCursor = new Position(position);
-            while (board.isInBoard(forwardCursor.verticalForwardShift())) {
+            while (isAdjacentTile(forwardCursor.verticalForwardShift())) {
                 Square square = board.getSquare(forwardCursor);
-                if (!square.isEmpty()) {
-                    crossingWord =  crossingWord + square.getTile().letter();
-                }
+                crossingWord =  crossingWord + square.getTile().letter();
             }
             if (crossingWord.length()>1) {
                 return Optional.of(crossingWord);
@@ -161,24 +158,24 @@ public class Engine {
         }
         if (Orientation.VERTICAL.equals(orientation)) {
             Position backwardCursor = new Position(position);
-            while (board.isInBoard(backwardCursor.horizontalBackwardShift())) {
+            while (isAdjacentTile(backwardCursor.horizontalBackwardShift())) {
                 Square square = board.getSquare(backwardCursor);
-                if (!square.isEmpty()) {
-                    crossingWord = square.getTile().letter() + crossingWord;
-                }
+                crossingWord = square.getTile().letter() + crossingWord;
             }
             Position forwardCursor = new Position(position);
-            while (board.isInBoard(forwardCursor.horizontalForwardShift())) {
+            while (isAdjacentTile(forwardCursor.horizontalForwardShift())) {
                 Square square = board.getSquare(forwardCursor);
-                if (!square.isEmpty()) {
-                    crossingWord =  crossingWord + square.getTile().letter();
-                }
+                crossingWord =  crossingWord + square.getTile().letter();
             }
             if (crossingWord.length()>1) {
                 return Optional.of(crossingWord);
             }
         }
         return Optional.empty();
+    }
+
+    private Boolean isAdjacentTile(Position position) {
+        return board.isInBoard(position) && !board.getSquare(position).isEmpty();
     }
 
     public Solution bestSolution(String lettersInMyHand) {
@@ -204,20 +201,25 @@ public class Engine {
         return upperBoudSolutions;
     }
 
-    public Integer calculatePoints(Pattern solution) {
+    private Integer calculatePoints(Pattern solution) {
         Position cursor = new Position(solution.position().get());
         Orientation orientation = solution.orientation().get();
         Integer points = 0;
         Integer wordMultiplicator = 1;
+        Integer numberOfLettersInHand = 7;
+        Integer bonusPoints = 0;
         for (int i=0; i<solution.length(); i++) {
             Square squareAtCursor = board.getSquare(cursor);
             Tile tile = solution.getSquare(i).getTile();
-            if (squareAtCursor.isMultiplicatorForLetter()) {
+            if (squareAtCursor.isEmpty()) {
+                numberOfLettersInHand--;
+            }
+            if (squareAtCursor.isEmpty() && squareAtCursor.isMultiplicatorForLetter()) {
                 points += squareAtCursor.getMultiplicator() * tile.points();
             } else {
                 points += tile.points();
             }
-            if (squareAtCursor.isMultiplicatorForWord()) {
+            if (squareAtCursor.isEmpty() && squareAtCursor.isMultiplicatorForWord()) {
                 wordMultiplicator *= squareAtCursor.getMultiplicator();
             }
             if (orientation.equals(Orientation.HORIZONTAL)) {
@@ -226,7 +228,10 @@ public class Engine {
                 cursor.verticalForwardShift();
             }
         }
-        return points * wordMultiplicator;
+        if (numberOfLettersInHand==0) {
+            bonusPoints = 40;
+        }
+        return points * wordMultiplicator + bonusPoints;
     }
 
 }
