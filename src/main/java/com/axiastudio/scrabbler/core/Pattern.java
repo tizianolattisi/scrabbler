@@ -75,9 +75,13 @@ public class Pattern {
 
     @Override
     public String toString() {
-        return "Pattern{" +
-                "squares=[" +  word() +
-                "]}";
+        String out = "Pattern{";
+        if (position.isPresent()) {
+            out += "position=" + position.get() + ",";
+            out += "orientation=" + orientation.get() + ",";
+        }
+        out += "squares=[" +  word() + "]}";
+        return out;
     }
 
 }
