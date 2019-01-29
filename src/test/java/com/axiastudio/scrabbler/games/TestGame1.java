@@ -7,6 +7,7 @@ import com.axiastudio.scrabbler.customs.awordedcrack.AwordedCrackBoardFactory;
 import com.axiastudio.scrabbler.customs.classic.ClassicBagFactory;
 import com.axiastudio.scrabbler.customs.classic.ClassicDictionaryFactory;
 import com.axiastudio.scrabbler.engine.Engine;
+import com.axiastudio.scrabbler.engine.Solution;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,7 +51,8 @@ public class TestGame1 {
         };
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "mraatim";
-        List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        System.out.println(solution);
         // ammirati
     }
 
@@ -75,8 +77,8 @@ public class TestGame1 {
         };
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "aaqhbao";
-        List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
-        printPatterns(upperBoundSolutions);
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        System.out.println(solution);
         // amba
     }
 
@@ -101,8 +103,8 @@ public class TestGame1 {
         };
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "coqhiua";
-        List<Pattern> upperBoundSolutions = findUpperBoundSolutions(engine.findSolutions(lettersInMyHand));
-        printPatterns(upperBoundSolutions);
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        System.out.println(solution);
         // acqua
     }
 
@@ -127,10 +129,61 @@ public class TestGame1 {
         };
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "eogihif";
-        List<Pattern> solutions = engine.findSolutions(lettersInMyHand);
-        List<Pattern> upperBoundSolutions = findUpperBoundSolutions(solutions);
-        printPatterns(upperBoundSolutions);
-        // ghie
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        System.out.println(solution);
+        // ghie (87 points)
+    }
+
+    @Test
+    public void testRound5() {
+        String[] lettersToPlace = {
+                "  acqua cuvee  ",
+                "     amba      ",
+                "      m        ",
+                "      i        ",
+                "     or        ",
+                "     ha        ",
+                "      t        ",
+                "   sazio       ",
+                "   b           ",
+                "   a           ",
+                " c v           ",
+                " ago           ",
+                " rh            ",
+                " pi            ",
+                " pe            "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "frolioi";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        System.out.println(solution);
+        // zif
+    }
+
+    @Test
+    public void testRound6() {
+        String[] lettersToPlace = {
+                "  acqua cuvee  ",
+                "     amba      ",
+                "      m        ",
+                "      i        ",
+                "     or        ",
+                "     ha        ",
+                "      t        ",
+                "   sazio       ",
+                "   b i         ",
+                "   a f         ",
+                " c v           ",
+                " ago           ",
+                " rh            ",
+                " pi            ",
+                " pe            "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "epuravi";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        System.out.println(solution);
+        // ?
     }
 
     private List<Pattern> findUpperBoundSolutions(List<Pattern> solutions) {
@@ -147,7 +200,6 @@ public class TestGame1 {
                 upperBoudSolutions.add(solutionToCheck);
             }
         }
-        System.out.println("\nupperBound: " + currentBound);
         return upperBoudSolutions;
     }
 
