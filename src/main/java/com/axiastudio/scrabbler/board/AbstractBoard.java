@@ -101,8 +101,8 @@ public abstract class AbstractBoard implements Board {
                 moveCursorForward(orientation, cursor);
                 Boolean theNextSquareIsNotInBoard = !isInBoard(cursor);
                 Boolean atLeastOneLetterUsed = remainingLetters < 7;
-                Boolean withMinLenght = patternUnderConstruction.length()>1;
-                if ((theNextSquareIsNotInBoard || getSquare(cursor).isEmpty()) && atLeastOneLetterUsed && withMinLenght && crossWithAtLeastALetter(patternUnderConstruction)) {
+                Boolean withMinLength = patternUnderConstruction.length()>1;
+                if ((theNextSquareIsNotInBoard || getSquare(cursor).isEmpty()) && atLeastOneLetterUsed && withMinLength && crossWithAtLeastALetter(patternUnderConstruction)) {
                     Pattern newPatternWithSameSquares = patternUnderConstruction.createNewPatternWithSameSquares();
                     patterns.add(newPatternWithSameSquares);
                 }
