@@ -35,8 +35,8 @@ public class AwordedCrackBoardFactory implements BoardFactory {
         board.setSquare(new Position(11, 3), new Square(3, LetterOrWord.LETTER));
 
         board.setSquare(new Position(0, 4), new Square(3, LetterOrWord.LETTER));
-        board.setSquare(new Position(6, 4), new Square(3, LetterOrWord.LETTER));
-        board.setSquare(new Position(8, 4), new Square(3, LetterOrWord.LETTER));
+        board.setSquare(new Position(6, 4), new Square(2, LetterOrWord.LETTER));
+        board.setSquare(new Position(8, 4), new Square(2, LetterOrWord.LETTER));
         board.setSquare(new Position(14, 4), new Square(3, LetterOrWord.LETTER));
 
         board.setSquare(new Position(1, 5), new Square(2, LetterOrWord.WORD));
@@ -63,8 +63,8 @@ public class AwordedCrackBoardFactory implements BoardFactory {
         board.setSquare(new Position(13, 9), new Square(2, LetterOrWord.WORD));
 
         board.setSquare(new Position(0, 10), new Square(3, LetterOrWord.LETTER));
-        board.setSquare(new Position(6, 10), new Square(3, LetterOrWord.LETTER));
-        board.setSquare(new Position(8, 10), new Square(3, LetterOrWord.LETTER));
+        board.setSquare(new Position(6, 10), new Square(2, LetterOrWord.LETTER));
+        board.setSquare(new Position(8, 10), new Square(2, LetterOrWord.LETTER));
         board.setSquare(new Position(14, 10), new Square(3, LetterOrWord.LETTER));
 
         board.setSquare(new Position(3, 11), new Square(3, LetterOrWord.LETTER));
