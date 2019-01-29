@@ -9,6 +9,7 @@ import com.axiastudio.scrabbler.dictionary.Dictionary;
 import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Engine {
@@ -50,6 +51,7 @@ public class Engine {
         return possiblesPatterns.stream()
                 .map(pattern -> discoverWordsByLettersAndPattern(lettersInYourHand, pattern))
                 .flatMap(List::stream)
+                .filter(solution -> checkSolutionForCrossingWords(solution))
                 .collect(Collectors.toList());
     }
 
@@ -101,6 +103,81 @@ public class Engine {
         stringBuilder.deleteCharAt(letters.indexOf(actualLetter));
         letters = stringBuilder.toString();
         return letters;
+    }
+
+    private Boolean checkSolutionForCrossingWords(Pattern solution) {
+        assert solution.orientation().isPresent();
+        assert solution.position().isPresent();
+        Orientation orientation = solution.orientation().get();
+        Position position = solution.position().get();
+        Boolean validSolution = Boolean.TRUE;
+        if (Orientation.HORIZONTAL.equals(orientation)) {
+
+            for (int i=0; i<solution.length()-1; i++) {
+                Integer x = position.getX()+i;
+                Integer y = Integer.valueOf(position.getY());
+                String centralLetter = solution.getSquare(i).getTile().letter();
+                Optional<String> crossingWord = findCrossingWord(centralLetter, new Position(x, y), Orientation.HORIZONTAL);
+                if (crossingWord.isPresent()) {
+                    validSolution = validSolution && dictionary.checkWordExistence(crossingWord.get());
+                }
+            }
+        }
+        if (Orientation.VERTICAL.equals(orientation)) {
+            for (int j=0; j<solution.length()-1; j++) {
+                Integer x = Integer.valueOf(position.getX());
+                Integer y = position.getY()+j;
+                String centralLetter = solution.getSquare(j).getTile().letter();
+                Optional<String> crossingWord = findCrossingWord(centralLetter, new Position(x, y), Orientation.VERTICAL);
+                if (crossingWord.isPresent()) {
+                    validSolution = validSolution && dictionary.checkWordExistence(crossingWord.get());
+                }
+            }
+        }
+        return validSolution;
+    }
+
+    private Optional<String> findCrossingWord(String centralLetter, Position position, Orientation orientation) {
+        String crossingWord = centralLetter;
+        if (Orientation.HORIZONTAL.equals(orientation)) {
+            Position backwardCursor = new Position(position);
+            while (board.isInBoard(backwardCursor.verticalBackwardShift())) {
+                Square square = board.getSquare(backwardCursor);
+                if (!square.isEmpty()) {
+                    crossingWord = square.getTile().letter() + crossingWord;
+                }
+            }
+            Position forwardCursor = new Position(position);
+            while (board.isInBoard(forwardCursor.verticalForwardShift())) {
+                Square square = board.getSquare(forwardCursor);
+                if (!square.isEmpty()) {
+                    crossingWord =  crossingWord + square.getTile().letter();
+                }
+            }
+            if (crossingWord.length()>1) {
+                return Optional.of(crossingWord);
+            }
+        }
+        if (Orientation.VERTICAL.equals(orientation)) {
+            Position backwardCursor = new Position(position);
+            while (board.isInBoard(backwardCursor.horizontalBackwardShift())) {
+                Square square = board.getSquare(backwardCursor);
+                if (!square.isEmpty()) {
+                    crossingWord = square.getTile().letter() + crossingWord;
+                }
+            }
+            Position forwardCursor = new Position(position);
+            while (board.isInBoard(forwardCursor.horizontalForwardShift())) {
+                Square square = board.getSquare(forwardCursor);
+                if (!square.isEmpty()) {
+                    crossingWord =  crossingWord + square.getTile().letter();
+                }
+            }
+            if (crossingWord.length()>1) {
+                return Optional.of(crossingWord);
+            }
+        }
+        return Optional.empty();
     }
 
     public Integer calculatePoints(Pattern solution) {

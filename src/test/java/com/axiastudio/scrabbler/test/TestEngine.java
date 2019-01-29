@@ -93,4 +93,31 @@ public class TestEngine {
                 .collect(Collectors.toList());
     }
 
+    @Test
+    public void testCheckSolutionForCrossingWords() {
+
+        String[] lettersToPlace = {
+                "i              ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               ",
+                "               "
+        };
+        Engine engine = new Engine(new AwordedCrackBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
+        engine.placeLetters(lettersToPlace);
+        String lettersInYourHand = "io";
+        List<Pattern> solutions = engine.findSolutions(lettersInYourHand);
+        Assertions.assertEquals(4, solutions.size());
+    }
+
 }
