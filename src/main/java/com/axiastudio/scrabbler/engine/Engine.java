@@ -113,7 +113,7 @@ public class Engine {
         Position position = solution.position().get();
         Boolean validSolution = Boolean.TRUE;
         if (Orientation.HORIZONTAL.equals(orientation)) {
-            for (int i=0; i<solution.length()-1; i++) {
+            for (int i=0; i<solution.length(); i++) {
                 Integer x = position.getX()+i;
                 Integer y = Integer.valueOf(position.getY());
                 String centralLetter = solution.getSquare(i).getTile().letter();
@@ -124,7 +124,7 @@ public class Engine {
             }
         }
         if (Orientation.VERTICAL.equals(orientation)) {
-            for (int j=0; j<solution.length()-1; j++) {
+            for (int j=0; j<solution.length(); j++) {
                 Integer x = Integer.valueOf(position.getX());
                 Integer y = position.getY()+j;
                 String centralLetter = solution.getSquare(j).getTile().letter();
@@ -192,8 +192,8 @@ public class Engine {
             Integer points = calculatePoints(solutionToCheck);
             if (points>currentBound) {
                 upperBoudSolutions.clear();
-                upperBoudSolutions.add(new Solution(solutionToCheck, currentBound));
                 currentBound = points;
+                upperBoudSolutions.add(new Solution(solutionToCheck, currentBound));
             } else if (points==currentBound) {
                 upperBoudSolutions.add(new Solution(solutionToCheck, currentBound));
             }
