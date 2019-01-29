@@ -194,7 +194,7 @@ public class Engine {
                 points += tile.points();
             }
             if (squareAtCursor.isMultiplicatorForWord()) {
-                wordMultiplicator += squareAtCursor.getMultiplicator();
+                wordMultiplicator *= squareAtCursor.getMultiplicator();
             }
             if (orientation.equals(Orientation.HORIZONTAL)) {
                 cursor.horizontalForwardShift();
