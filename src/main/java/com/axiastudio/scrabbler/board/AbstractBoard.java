@@ -61,7 +61,7 @@ public abstract class AbstractBoard implements Board {
 
     @Override
     public Boolean isInBoard(Position position) {
-        return position.getX()>=0 && position.getY()>=0 && position.getX()<size-1 && position.getY()<size-1;
+        return position.getX()>=0 && position.getY()>=0 && position.getX()<size && position.getY()<size;
     }
 
     private List<Pattern> findPatternFromPosition(Position position) {
