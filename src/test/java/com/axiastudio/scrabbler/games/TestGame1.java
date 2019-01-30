@@ -5,6 +5,7 @@ import com.axiastudio.scrabbler.customs.classic.ClassicBagFactory;
 import com.axiastudio.scrabbler.customs.classic.ClassicDictionaryFactory;
 import com.axiastudio.scrabbler.engine.Engine;
 import com.axiastudio.scrabbler.engine.Solution;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,8 +47,8 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "mraatim";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // ammirati
+        Assertions.assertTrue(solution.pattern().word().equals("matamori"));
+        // But at time of the round, the solution was "ammirati"
     }
 
     @Test
@@ -72,8 +73,8 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "aaqhbao";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // amba
+        Assertions.assertTrue(solution.pattern().word().equals("bah"));
+        // But at time of the round, the solution was "amba"
     }
 
     @Test
@@ -98,8 +99,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "coqhiua";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // acqua
+        Assertions.assertTrue(solution.pattern().word().equals("acqua"));
     }
 
     @Test
@@ -124,9 +124,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "eogihif";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // ghie (87 points)
-    }
+        Assertions.assertTrue(solution.pattern().word().equals("ghie"));    }
 
     @Test
     public void testRound5() {
@@ -150,8 +148,8 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "frolioi";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // zif
+        Assertions.assertTrue(solution.pattern().word().equals("zolfori"));
+        // But at time of the round, the solution was "zif"
     }
 
     @Test
@@ -176,9 +174,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "rroltoi";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // litio
-    }
+        Assertions.assertTrue(solution.pattern().word().equals("litio"));    }
 
     @Test
     public void testRound7() {
@@ -203,9 +199,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "rroliad";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // dolorai
-    }
+        Assertions.assertTrue(solution.pattern().word().equals("dolorai"));    }
 
     @Test
     public void testRound8() {
@@ -229,8 +223,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "rraseea";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // astraere
+        Assertions.assertTrue(solution.pattern().word().equals("astraere"));
     }
 
     @Test
@@ -255,8 +248,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "ffeltcp";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // felpe
+        Assertions.assertTrue(solution.pattern().word().equals("felpe"));
     }
 
     @Test
@@ -281,8 +273,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "fnuotcm";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // futon
+        Assertions.assertTrue(solution.pattern().word().equals("futon"));
     }
 
     @Test
@@ -307,8 +298,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "doeoocm";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // comode
+        Assertions.assertTrue(solution.pattern().word().equals("comode"));
     }
 
     @Test
@@ -333,8 +323,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "nessuso";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // cune
+        Assertions.assertTrue(solution.pattern().word().equals("cune"));
     }
 
     @Test
@@ -359,8 +348,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "aoessso";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // sesso
+        Assertions.assertTrue(solution.pattern().word().equals("sesso"));
     }
 
     @Test
@@ -385,8 +373,7 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "aos";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
-        // zano
+        Assertions.assertTrue(solution.pattern().word().equals("zano"));
     }
 
     @Test
@@ -411,7 +398,6 @@ public class TestGame1 {
         engine.placeLetters(lettersToPlace);
         String lettersInMyHand = "s";
         Solution solution = engine.bestSolution(lettersInMyHand);
-        System.out.println(solution);
         // the opponent is the winner (but with a hint in round 7) 628 - 692
     }
 }
