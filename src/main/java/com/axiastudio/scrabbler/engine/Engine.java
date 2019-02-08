@@ -9,6 +9,7 @@ import com.axiastudio.scrabbler.dictionary.Dictionary;
 import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,12 +48,13 @@ public class Engine {
         return !" ".equals(maybeALetter);
     }
 
-    public List<Pattern> findSolutions(String lettersInYourHand) {
+    public List<Solution> findSolutions(String lettersInYourHand) {
         List<Pattern> possiblesPatterns = board.findPossiblesPatterns();
         return possiblesPatterns.stream()
                 .map(pattern -> discoverWordsByLettersAndPattern(lettersInYourHand, pattern))
                 .flatMap(List::stream)
-                .filter(solution -> checkSolutionForCrossingWords(solution))
+                .filter(pattern -> checkPatternForCrossingWords(pattern))
+                .map(pattern -> new Solution(pattern, calculatePoints(pattern)))
                 .collect(Collectors.toList());
     }
 
@@ -106,17 +108,17 @@ public class Engine {
         return letters;
     }
 
-    private Boolean checkSolutionForCrossingWords(Pattern solution) {
-        assert solution.orientation().isPresent();
-        assert solution.position().isPresent();
-        Orientation orientation = solution.orientation().get();
-        Position position = solution.position().get();
+    private Boolean checkPatternForCrossingWords(Pattern pattern) {
+        assert pattern.orientation().isPresent();
+        assert pattern.position().isPresent();
+        Orientation orientation = pattern.orientation().get();
+        Position position = pattern.position().get();
         Boolean validSolution = Boolean.TRUE;
         if (Orientation.HORIZONTAL.equals(orientation)) {
-            for (int i=0; i<solution.length(); i++) {
+            for (int i=0; i<pattern.length(); i++) {
                 Integer x = position.getX()+i;
                 Integer y = Integer.valueOf(position.getY());
-                String centralLetter = solution.getSquare(i).getTile().letter();
+                String centralLetter = pattern.getSquare(i).getTile().letter();
                 Optional<String> crossingWord = findCrossingWord(centralLetter, new Position(x, y), Orientation.HORIZONTAL);
                 if (crossingWord.isPresent()) {
                     validSolution = validSolution && dictionary.checkWordExistence(crossingWord.get());
@@ -124,10 +126,10 @@ public class Engine {
             }
         }
         if (Orientation.VERTICAL.equals(orientation)) {
-            for (int j=0; j<solution.length(); j++) {
+            for (int j=0; j<pattern.length(); j++) {
                 Integer x = Integer.valueOf(position.getX());
                 Integer y = position.getY()+j;
-                String centralLetter = solution.getSquare(j).getTile().letter();
+                String centralLetter = pattern.getSquare(j).getTile().letter();
                 Optional<String> crossingWord = findCrossingWord(centralLetter, new Position(x, y), Orientation.VERTICAL);
                 if (crossingWord.isPresent()) {
                     validSolution = validSolution && dictionary.checkWordExistence(crossingWord.get());
@@ -178,12 +180,12 @@ public class Engine {
         return board.isInBoard(position) && !board.getSquare(position).isEmpty();
     }
 
-    public Solution bestSolution(String lettersInMyHand) {
-        List<Pattern> solutions = findSolutions(lettersInMyHand);
-        List<Solution> upperBoundSolutions = findUpperBoundSolutions(solutions);
-        return upperBoundSolutions.get(0);
+    public Optional<Solution> bestSolution(String lettersInMyHand) {
+        List<Solution> solutions = findSolutions(lettersInMyHand);
+        return solutions.stream().max(Comparator.comparing(Solution::points));
     }
 
+    /*
     private List<Solution> findUpperBoundSolutions(List<Pattern> solutions) {
         List<Solution> upperBoudSolutions = new ArrayList<>();
         Integer currentBound = 0;
@@ -200,6 +202,7 @@ public class Engine {
         }
         return upperBoudSolutions;
     }
+    */
 
     private Integer calculatePoints(Pattern solution) {
         Position cursor = new Position(solution.position().get());

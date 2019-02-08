@@ -8,6 +8,7 @@ import com.axiastudio.scrabbler.core.Square;
 import com.axiastudio.scrabbler.core.Pattern;
 import com.axiastudio.scrabbler.customs.classic.ClassicDictionaryFactory;
 import com.axiastudio.scrabbler.engine.Engine;
+import com.axiastudio.scrabbler.engine.Solution;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -47,6 +48,7 @@ public class TestEngine {
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
         List<String> solutions = engine.findSolutions(lettersInYourHand).stream()
+                .map(Solution::pattern)
                 .map(Pattern::word)
                 .collect(Collectors.toList());
         Assertions.assertTrue(solutions.contains("casi"));
@@ -60,6 +62,7 @@ public class TestEngine {
         engine.placeLetter(2, 0, "s");
         String lettersInYourHand = "ai";
         List<String> solutions = engine.findSolutions(lettersInYourHand).stream()
+                .map(Solution::pattern)
                 .map(Pattern::word)
                 .collect(Collectors.toList());
         Assertions.assertTrue(solutions.contains("casi"));
@@ -89,6 +92,7 @@ public class TestEngine {
         engine.placeLetters(lettersToPlace);
         String lettersInYourHand = "dahqrnf";
         List<String> solutions = engine.findSolutions(lettersInYourHand).stream()
+                .map(Solution::pattern)
                 .map(Pattern::word)
                 .collect(Collectors.toList());
     }
@@ -116,7 +120,7 @@ public class TestEngine {
         Engine engine = new Engine(new AwordedCrackBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
         engine.placeLetters(lettersToPlace);
         String lettersInYourHand = "io";
-        List<Pattern> solutions = engine.findSolutions(lettersInYourHand);
+        List<Solution> solutions = engine.findSolutions(lettersInYourHand);
         Assertions.assertEquals(4, solutions.size());
     }
 
