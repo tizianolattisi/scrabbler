@@ -115,7 +115,7 @@ public class TestGame2 {
                 "         a     ",
                 "         l     ",
                 "       alidada ",
-                "         n   th",
+                "         n   tu",
                 "         o     ",
                 "               "
         };
@@ -140,7 +140,7 @@ public class TestGame2 {
                 "         a oh  ",
                 "         l     ",
                 "       alidada ",
-                "         n   th",
+                "         n   tu",
                 "         o     ",
                 "               "
         };
@@ -165,7 +165,7 @@ public class TestGame2 {
                 "         a ohe ",
                 "         l     ",
                 "       alidada ",
-                "         n   th",
+                "         n   tu",
                 "         o     ",
                 "               "
         };
@@ -190,7 +190,7 @@ public class TestGame2 {
                 "      a  a ohe ",
                 "         l     ",
                 "       alidada ",
-                "         n   th",
+                "         n   tu",
                 "         o     ",
                 "               "
         };
@@ -211,11 +211,11 @@ public class TestGame2 {
                 "     r         ",
                 "    suo  s     ",
                 "   ronzare   pc", // central
-                "    lai  ghiro ",
+                "  velai  ghiro ",
                 "      a  a ohe ",
                 "         l     ",
                 "       alidada ",
-                "         n   th",
+                "         n   tu",
                 "         o     ",
                 "               "
         };
@@ -229,18 +229,18 @@ public class TestGame2 {
     public void testRound9() {
         String[] lettersToPlace = {
                 "         s     ",
-                "         f     ",
-                "         i     ",
-                "         g     ",
+                "       s f     ",
+                "       u i     ",
+                "       a g     ",
                 "     castano   ",
-                "     r         ",
+                "     r e       ",
                 "    suo  s     ",
                 "   ronzare   pc", // central
-                "    lai  ghiro ",
+                "  velai  ghiro ",
                 "      a  a ohe ",
                 "         l     ",
                 "       alidada ",
-                "         n   th",
+                "         n   tu",
                 "         o     ",
                 "               "
         };
@@ -254,18 +254,18 @@ public class TestGame2 {
     public void testRound10() {
         String[] lettersToPlace = {
                 "         sememi",
-                "         f     ",
-                "         i     ",
-                "         g     ",
+                "       s f     ",
+                "       u i     ",
+                "       a g     ",
                 "     castano   ",
-                "     r         ",
+                "     r e       ",
                 "    suo  s     ",
                 "   ronzare   pc", // central
-                "    lai  ghiro ",
+                "  velai  ghiro ",
                 "      a  a ohe ",
                 "         l     ",
                 "       alidada ",
-                "         n   th",
+                "         n   tu",
                 "    bavero     ",
                 "               "
         };
@@ -279,18 +279,18 @@ public class TestGame2 {
     public void testRound11() {
         String[] lettersToPlace = {
                 "         sememi",
-                "         f     ",
-                "         i     ",
-                "         g     ",
+                "       s f     ",
+                "       u i     ",
+                "       a g     ",
                 "     castano   ",
-                "     r         ",
+                "     r e       ",
                 "    suo  s     ",
                 "   ronzare   pc", // central
-                "    lai  ghiro ",
+                "  velai  ghiro ",
                 "      a  a ohe ",
                 "f        l     ",
                 "e      alidada ",
-                "l        n   th",
+                "l        n   tu",
                 "c   bavero     ",
                 "emici          "
         };
@@ -304,18 +304,18 @@ public class TestGame2 {
     public void testRound12() {
         String[] lettersToPlace = {
                 "         sememi",
-                "         f    o",
-                "         i    n",
-                "         g peti",
+                "       s f    o",
+                "       u i    n",
+                "       a g peti",
                 "     castano  a",
-                "     r         ",
+                "     r e       ",
                 "    suo  s     ",
                 "   ronzare   pc", // central
-                "    lai  ghiro ",
+                "  velai  ghiro ",
                 "      a  a ohe ",
                 "f        l     ",
                 "e      alidada ",
-                "l        n   th",
+                "l        n   tu",
                 "c   bavero     ",
                 "emici          "
         };
@@ -329,18 +329,18 @@ public class TestGame2 {
     public void testRound13() {
         String[] lettersToPlace = {
                 "         sememi",
-                "         f    o",
-                "         i    n",
-                "         g peti",
+                "       s f    o",
+                "       u i    n",
+                "       a g peti",
                 "     castano  a",
-                "     r         ",
+                "     r e       ",
                 "    suo  s     ",
                 "   ronzare   pc", // central
-                "    lai  ghiro ",
+                "  velai  ghiro ",
                 "      a  a ohe ",
                 "f        l     ",
                 "e      alidada ",
-                "l        n   th",
+                "l        n   tu",
                 "c   bavero     ",
                 "emici          "
         };
@@ -348,6 +348,233 @@ public class TestGame2 {
         String lettersInMyHand = "intoaai";
         Solution solution = engine.bestSolution(lettersInMyHand);
         Assertions.assertEquals("pontaio", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound14() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f    o",
+                "       u in   n",
+                "       a gipeti",
+                "     castano  a",
+                "     r e  in   ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                "      a  a ohe ",
+                "f        l     ",
+                "e      alidada ",
+                "l        n   tu",
+                "c   bavero     ",
+                "emici          "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "iouofai";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("fuio", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound15() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f    o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano  a",
+                "     r e  in   ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a  a ohe ",
+                "f        l     ",
+                "e      alidada ",
+                "l        n   tu",
+                "c   bavero     ",
+                "emici          "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "eoctvai";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("vuotavi", solution.pattern().word());
+        System.out.println(solution.points());
+    }
+
+    @Test
+    public void testRound16() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f    o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano  a",
+                "     r e  in   ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a  a ohe ",
+                "f o      l     ",
+                "e t    alidada ",
+                "l a   ti n   tu",
+                "c v bavero     ",
+                "emici          "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "ioeczoo";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("oziai", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound17() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f    o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano  a",
+                "     r e  in   ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a  a ohe ",
+                "f o   i  l     ",
+                "e t    alidada ",
+                "l amo ti n   tu",
+                "c v bavero     ",
+                "emici          "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "boeczoo";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("tbc", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound18() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f    o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano ba",
+                "     r e  in c ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a  a ohe ",
+                "f o   i  l     ",
+                "est    alidada ",
+                "l amo ti n   tu",
+                "c v bavero     ",
+                "emici          "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "ooemzoo";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("zoo", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound19() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f    o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano ba",
+                "     r e  in c ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a  a ohe ",
+                "f o   i  l     ",
+                "est    alidada ",
+                "l amo ti n   tu",
+                "c v bavero zoo ",
+                "emici       r  "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "ooepm";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("mm", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound20() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f    o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano ba",
+                "     r e  in c ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a  a ohe ",
+                "f o   i  l     ",
+                "est lo alidada ",
+                "l amo ti n   tu",
+                "c v bavero zoo ",
+                "emici       r  "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "ooep";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("pel", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound21() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f u  o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano ba",
+                "     r e  in c ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a pa ohe ",
+                "f o   i el     ",
+                "est lo alidada ",
+                "l amo ti n   tu",
+                "c v bavero zoo ",
+                "emici       r  "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "oo";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("do", solution.pattern().word());
+    }
+
+    @Test
+    public void testRound22() {
+        String[] lettersToPlace = {
+                "         sememi",
+                "       s f u  o",
+                "      qu in   n",
+                "       a gipeti",
+                "     castano ba",
+                "     r e  in c ",
+                "    suo  s t   ",
+                "   ronzare a pc", // central
+                "  velai  ghiro ",
+                " fuio a pa ohe ",
+                "f o  bi el     ",
+                "est lo alidada ",
+                "l amo ti no  tu",
+                "c v bavero zoo ",
+                "emici       r  "
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "o";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("to", solution.pattern().word());
+        // win
     }
 
 }

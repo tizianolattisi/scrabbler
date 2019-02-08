@@ -253,6 +253,32 @@ public class TestGame1 {
     }
 
     @Test
+    public void testRound9opponent() {
+        String[] lettersToPlace = {
+                "  acqua cuvee  ",
+                " d   amba      ",
+                "mole  m        ",
+                " l litio       ",
+                "go   or        ",
+                "or   ha        ",
+                "ta    t   a    ",
+                "oi sazio  s    ",
+                "   b i cestino ",
+                "   a f    r    ",
+                " c v      a    ",
+                " ago      e    ",
+                " rh       r    ",
+                " pi      felpe ",
+                " pe         cab"
+        };
+        engine.placeLetters(lettersToPlace);
+        String lettersInMyHand = "euirvpa";
+        Solution solution = engine.bestSolution(lettersInMyHand);
+        Assertions.assertEquals("pruavie", solution.pattern().word());
+        System.out.println(solution.points());
+    }
+
+    @Test
     public void testRound10() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
