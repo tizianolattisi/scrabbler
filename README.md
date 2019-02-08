@@ -1,0 +1,3 @@
+# scrabbler
+
+A Scrabble bot.
