@@ -141,38 +141,46 @@ public class Engine {
     private Optional<String> findCrossingWord(String centralLetter, Position position, Orientation orientation) {
         String crossingWord = centralLetter;
         if (Orientation.HORIZONTAL.equals(orientation)) {
-            Position backwardCursor = new Position(position);
-            while (isAdjacentTile(backwardCursor.verticalBackwardShift())) {
-                Square square = board.getSquare(backwardCursor);
-                if (!square.isEmpty()) {
-                    crossingWord = square.getTile().letter() + crossingWord;
-                }
-            }
-            Position forwardCursor = new Position(position);
-            while (isAdjacentTile(forwardCursor.verticalForwardShift())) {
-                Square square = board.getSquare(forwardCursor);
-                crossingWord =  crossingWord + square.getTile().letter();
-            }
-            if (crossingWord.length()>1) {
-                return Optional.of(crossingWord);
-            }
+            crossingWord = findHorizontalCrossingWord(position, crossingWord);
         }
         if (Orientation.VERTICAL.equals(orientation)) {
-            Position backwardCursor = new Position(position);
-            while (isAdjacentTile(backwardCursor.horizontalBackwardShift())) {
-                Square square = board.getSquare(backwardCursor);
+            crossingWord = findVerticalCrossingWord(position, crossingWord);
+        }
+        if (crossingWord.length()>1) {
+            return Optional.of(crossingWord);
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    private String findVerticalCrossingWord(Position position, String crossingWord) {
+        Position backwardCursor = new Position(position);
+        while (isAdjacentTile(backwardCursor.horizontalBackwardShift())) {
+            Square square = board.getSquare(backwardCursor);
+            crossingWord = square.getTile().letter() + crossingWord;
+        }
+        Position forwardCursor = new Position(position);
+        while (isAdjacentTile(forwardCursor.horizontalForwardShift())) {
+            Square square = board.getSquare(forwardCursor);
+            crossingWord =  crossingWord + square.getTile().letter();
+        }
+        return crossingWord;
+    }
+
+    private String findHorizontalCrossingWord(Position position, String crossingWord) {
+        Position backwardCursor = new Position(position);
+        while (isAdjacentTile(backwardCursor.verticalBackwardShift())) {
+            Square square = board.getSquare(backwardCursor);
+            if (!square.isEmpty()) {
                 crossingWord = square.getTile().letter() + crossingWord;
             }
-            Position forwardCursor = new Position(position);
-            while (isAdjacentTile(forwardCursor.horizontalForwardShift())) {
-                Square square = board.getSquare(forwardCursor);
-                crossingWord =  crossingWord + square.getTile().letter();
-            }
-            if (crossingWord.length()>1) {
-                return Optional.of(crossingWord);
-            }
         }
-        return Optional.empty();
+        Position forwardCursor = new Position(position);
+        while (isAdjacentTile(forwardCursor.verticalForwardShift())) {
+            Square square = board.getSquare(forwardCursor);
+            crossingWord =  crossingWord + square.getTile().letter();
+        }
+        return crossingWord;
     }
 
     private Boolean isAdjacentTile(Position position) {
