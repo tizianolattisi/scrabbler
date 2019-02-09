@@ -8,7 +8,6 @@ import com.axiastudio.scrabbler.core.*;
 import com.axiastudio.scrabbler.dictionary.Dictionary;
 import com.axiastudio.scrabbler.dictionary.DictionaryFactory;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -184,25 +183,6 @@ public class Engine {
         List<Solution> solutions = findSolutions(lettersInMyHand);
         return solutions.stream().max(Comparator.comparing(Solution::points));
     }
-
-    /*
-    private List<Solution> findUpperBoundSolutions(List<Pattern> solutions) {
-        List<Solution> upperBoudSolutions = new ArrayList<>();
-        Integer currentBound = 0;
-        for (int i=0; i<solutions.size(); i++) {
-            Pattern solutionToCheck = solutions.get(i);
-            Integer points = calculatePoints(solutionToCheck);
-            if (points>currentBound) {
-                upperBoudSolutions.clear();
-                currentBound = points;
-                upperBoudSolutions.add(new Solution(solutionToCheck, currentBound));
-            } else if (points==currentBound) {
-                upperBoudSolutions.add(new Solution(solutionToCheck, currentBound));
-            }
-        }
-        return upperBoudSolutions;
-    }
-    */
 
     private Integer calculatePoints(Pattern solution) {
         Position cursor = new Position(solution.position().get());
