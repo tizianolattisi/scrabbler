@@ -25,7 +25,7 @@ public class TestGame2 {
         engine = new Engine(new AwordedCrackBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
     }
 
-    @Test
+    //@Test
     public void testRound1() {
         String[] lettersToPlace = {
                 "               ",
@@ -50,7 +50,7 @@ public class TestGame2 {
         Assertions.assertEquals("ronzare", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound2() {
         String[] lettersToPlace = {
                 "               ",
@@ -75,7 +75,7 @@ public class TestGame2 {
         Assertions.assertEquals("segalino", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound3() {
         String[] lettersToPlace = {
                 "               ",
@@ -100,7 +100,7 @@ public class TestGame2 {
         Assertions.assertEquals("alidada", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound4() {
         String[] lettersToPlace = {
                 "               ",
@@ -125,7 +125,7 @@ public class TestGame2 {
         Assertions.assertEquals("ghiro", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound5() {
         String[] lettersToPlace = {
                 "               ",
@@ -150,7 +150,7 @@ public class TestGame2 {
         Assertions.assertEquals("ohe", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound6() {
         String[] lettersToPlace = {
                 "               ",
@@ -175,7 +175,7 @@ public class TestGame2 {
         Assertions.assertEquals("ozia", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound7() {
         String[] lettersToPlace = {
                 "               ",
@@ -200,7 +200,7 @@ public class TestGame2 {
         Assertions.assertEquals("velai", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound8() {
         String[] lettersToPlace = {
                 "               ",
@@ -225,7 +225,7 @@ public class TestGame2 {
         Assertions.assertEquals("suase", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound9() {
         String[] lettersToPlace = {
                 "         s     ",
@@ -250,7 +250,7 @@ public class TestGame2 {
         Assertions.assertEquals("sememi", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound10() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -275,7 +275,7 @@ public class TestGame2 {
         Assertions.assertEquals("emici", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound11() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -300,7 +300,7 @@ public class TestGame2 {
         Assertions.assertEquals("ionia", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound12() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -325,7 +325,7 @@ public class TestGame2 {
         Assertions.assertEquals("pontaio", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound13() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -350,7 +350,7 @@ public class TestGame2 {
         Assertions.assertEquals("pontaio", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound14() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -375,7 +375,7 @@ public class TestGame2 {
         Assertions.assertEquals("fuio", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound15() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -401,7 +401,7 @@ public class TestGame2 {
         System.out.println(solution.points());
     }
 
-    @Test
+    //@Test
     public void testRound16() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -426,7 +426,7 @@ public class TestGame2 {
         Assertions.assertEquals("oziai", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound17() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -451,7 +451,7 @@ public class TestGame2 {
         Assertions.assertEquals("tbc", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound18() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -476,7 +476,7 @@ public class TestGame2 {
         Assertions.assertEquals("zoo", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound19() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -501,7 +501,7 @@ public class TestGame2 {
         Assertions.assertEquals("mm", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound20() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -526,7 +526,7 @@ public class TestGame2 {
         Assertions.assertEquals("pel", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound21() {
         String[] lettersToPlace = {
                 "         sememi",
@@ -551,7 +551,7 @@ public class TestGame2 {
         Assertions.assertEquals("do", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound22() {
         String[] lettersToPlace = {
                 "         sememi",

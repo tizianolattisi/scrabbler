@@ -25,7 +25,7 @@ public class TestGame1 {
         engine = new Engine(new AwordedCrackBoardFactory(), new ClassicDictionaryFactory(DICTIONARY_FILE_NAME), new ClassicBagFactory());
     }
 
-    @Test
+    //@Test
     public void testRound1() {
         String[] lettersToPlace = {
                 "               ",
@@ -51,7 +51,7 @@ public class TestGame1 {
         // But at time of the round, the solution was "ammirati"
     }
 
-    @Test
+    //@Test
     public void testRound2() {
         String[] lettersToPlace = {
                 "      a        ",
@@ -77,7 +77,7 @@ public class TestGame1 {
         // But at time of the round, the solution was "amba"
     }
 
-    @Test
+    //@Test
     public void testRound3() {
         String[] lettersToPlace = {
                 "      a cuvee  ",
@@ -102,7 +102,7 @@ public class TestGame1 {
         Assertions.assertEquals("acqua", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound4() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -127,7 +127,7 @@ public class TestGame1 {
         Assertions.assertEquals("ghie", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound5() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -153,7 +153,7 @@ public class TestGame1 {
         // But at time of the round, the solution was "zif"
     }
 
-    @Test
+    //@Test
     public void testRound6() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -177,7 +177,7 @@ public class TestGame1 {
         Solution solution = engine.bestSolution(lettersInMyHand).get();
         Assertions.assertEquals("litio", solution.pattern().word());    }
 
-    @Test
+    //@Test
     public void testRound7() {
         // note: the "pruvaie" solution was a suggest to the opponent... ;-)
         String[] lettersToPlace = {
@@ -202,7 +202,7 @@ public class TestGame1 {
         Solution solution = engine.bestSolution(lettersInMyHand).get();
         Assertions.assertEquals("dolorai", solution.pattern().word());    }
 
-    @Test
+    //@Test
     public void testRound8() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -227,7 +227,7 @@ public class TestGame1 {
         Assertions.assertEquals("astraere", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound9() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -252,7 +252,7 @@ public class TestGame1 {
         Assertions.assertEquals("felpe", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound9opponent() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -278,7 +278,7 @@ public class TestGame1 {
         System.out.println(solution.points());
     }
 
-    @Test
+    //@Test
     public void testRound10() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -303,7 +303,7 @@ public class TestGame1 {
         Assertions.assertEquals("futon", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound11() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -328,7 +328,7 @@ public class TestGame1 {
         Assertions.assertEquals("comode", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound12() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -353,7 +353,7 @@ public class TestGame1 {
         Assertions.assertEquals("cune", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound13() {
         String[] lettersToPlace = {
                 "  acqua cuvee  ",
@@ -378,7 +378,7 @@ public class TestGame1 {
         Assertions.assertEquals("sesso", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound14() {
         String[] lettersToPlace = {
                 "  acqua cuvee s",
@@ -403,7 +403,7 @@ public class TestGame1 {
         Assertions.assertEquals("zano", solution.pattern().word());
     }
 
-    @Test
+    //@Test
     public void testRound15() {
         String[] lettersToPlace = {
                 "  acqua cuvee s",
